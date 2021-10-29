@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <!-- <title>Document</title> -->
+</head>
+
+<body style="background-color:#ffe8f6">
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{{ url_for('index') }}">
+                <img src="/static/images/logo.png" width="112">
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="{{ url_for('index') }}">Home</a>
+                <a class="navbar-item">Disaster Information</a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">Contribution</a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">Individual</a>
+                        <a class="navbar-item">Enterprise</a>
+                    </div>
+                    <a class="navbar-item">Documentation</a>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light">Log in</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <img src="/static/images/top.png" alt="" style="margin:0 !important; padding:0 !important; width: 100%;">
+    <section class="section">
+        <div class="content has-text-centered">
+            <div class="container is-mobile">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </section>
+
+    <img src="/static/images/bottom.png" alt="" style="margin:0 !important; padding:0 !important; width: 100%;">
+
+    <!-- <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Project "There is a loved one waiting for your contact"</strong> by Y. Kesamaru<a href=""></a>.
+                The source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+            </p>
+        </div>
+    </footer> -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

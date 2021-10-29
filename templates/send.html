@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+        <!-- {% for location in face_locations %}
+                {{ location }}
+        {% endfor %} -->
+        <!-- <div class="block"> -->
+        <div class="box">
+                <h1 class="title"> Choose the face of the person you are looking for.</h1>
+                <figure >
+                        {% for face_file_name in face_file_name_list %}
+                        <a href="{{ face_file_name }}.html">
+                                <img 
+                                class="has-ratio" 
+                                width="80" 
+                                style="border-radius: 20px" 
+                                src="{{ face_file_name }}"
+                                >
+                        </a>
+                        {% endfor %}
+                </figure>
+        </div>
+{% endblock %}

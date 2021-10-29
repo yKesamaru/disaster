@@ -42,7 +42,7 @@ All the faces taken by the camera installed in the shelter are converted into nu
 This time, I published the basic part of the web application on github. It will be possible to use it by improving this. Next, I'll create an application that creates face numerical data from the camera. 
 
 ## ユーザーがプロジェクトを開始する方法 How the user starts the project 
-```
+```bash
 $ pip install -r requirements.txt
 ``` 
 
@@ -51,7 +51,7 @@ $ pip install -r requirements.txt
 現在Webアプリケーションの基本部分のみ作成されています。  
 
 Currently only the basic part of the web application has been created.
-```
+```python
 import os
 import random
 

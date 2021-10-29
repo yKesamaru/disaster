@@ -63,3 +63,5 @@ from PIL import Image
 活動が広く広がることを願います。英訳出来る方がいらっしゃると大変助かります。<br>
 
 I hope that the activities will spread widely. It would be very helpful if someone could translate it into English. 
+
+Thankyou

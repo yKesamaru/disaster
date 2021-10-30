@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "python",
+      "type": "python",
+      "program": "${file}",
+      "request": "launch",
+      "python": "/home/terms/ビデオ/one_drive/FACE01GRAPHICS123_UBUNTU_VENV/venv/bin/python3",
+      "cwd": "/home/terms/ビデオ/one_drive/FACE01GRAPHICS123_UBUNTU_VENV/あなたの連絡を待ってる大切な人がいますプロジェクト/create_face_data/",
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Missing person search system </h1>
+<img src="/static/images/flooding-minot-n-d-june-24-2011-red-cross-shelter-in-an-auditorium-that-is-c80be8-1024.jpg"
+        width="200px" style="border-radius: 5px;" alt="">
+<div class="field">
+        <div class="control">
+                <input type="checkbox" id="terms_and_conditions" value="1" onclick="terms_changed(this)">
+                <label class="checkbox">
+                        I agree to the <a href="{{ url_for('terms_n_conditions') }}">terms and conditions</a>
+                </label>
+        </div>
+</div>
+<button type="submit" id="submit_button" disabled class="button is-primary"
+        onclick="location.href='{{ url_for('goto_upload_page') }}'">I understand and continue</button>
+
+<script>
+        //JavaScript function that enables or disables a submit button depending
+        //on whether a checkbox has been ticked or not.
+        function terms_changed(termsCheckBox) {
+                //If the checkbox has been checked
+                if (termsCheckBox.checked) {
+                        //Set the disabled property to FALSE and enable the button.
+                        document.getElementById("submit_button").disabled = false;
+                } else {
+                        //Otherwise, disable the submit button.
+                        document.getElementById("submit_button").disabled = true;
+                }
+        }
+</script>
+{% endblock %}

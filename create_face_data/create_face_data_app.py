@@ -72,7 +72,7 @@ def date_format():
     now = datetime.now()
     return shelter_name + '_' + str(now.year) + '_' + str(now.month) + '_'+str(now.day) + '_' + str(now.hour) + '_' + str(now.minute) + '_' + str(now.second)
 
-cnt=0
+# cnt=0
 face_encodings_list=[]
 name_list =[]
 while True:
@@ -87,9 +87,9 @@ while True:
     face_encodings_list.append(face_encodings)
     name_list.append(date_format())
 
-    cnt=cnt+1
-    if cnt > 10:
-        break
+    # cnt=cnt+1
+    # if cnt > 10:
+    #     break
 
 
 np.savez(

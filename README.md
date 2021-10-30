@@ -66,6 +66,8 @@ $ pip install -r requirements.txt
 
 使用するPythonライブラリはrequirements.txtに書いてあります。pipを使い一括でインストールしてください。足りないライブラリがある場合はrequirements.txtに追記して頂けると助かります。  
 
+The Python library to use is described in requirements.txt. Please install all at once using pip. If there is a missing library, I'm glad to if you could add it to requirements.txt.  
+
 現在Webアプリケーションの基本部分のみ作成されています。  
 
 Currently only the basic part of the web application has been created.

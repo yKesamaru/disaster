@@ -14,9 +14,9 @@ However, pre-registration before the disaster is often required, and/or family d
 So it is expected that it will be difficult to confirm the safety of the family after the disaster if some measures are not taken before the disaster. 
 Also, if the victim's smartphone cannot be used, it is difficult for the victim to try to contact family immediately after the disaster. 
 
-こうした災害は世界中で発生しています。このプロジェクトでは日本に限らず世界中の人々が事由にシステムを構築できるようにするためgithubで公開します。  
+こうした災害は世界中で発生しています。このプロジェクトでは世界中の人々が自由にシステムを構築できるようにするためgithubで公開します。  
 
-These disasters are occurring all over the world. In this project, I'll publish it on github so that people who lived all over the world can build the system.
+These disasters are occurring all over the world. In this project, I'll publish it on github so that people who lived all over the world can build the system for free.
 
 このシステムは3つのブロックから成り立っています。  
 
@@ -41,7 +41,25 @@ All the faces taken by the camera installed in the shelter are converted into nu
 
 This time, I published the basic part of the web application on github. It will be possible to use it by improving this. Next, I'll create an application that creates face numerical data from the camera. 
 
-## ユーザーがプロジェクトを開始する方法 How the user starts the project 
+## ロードマップ Roadmap  
+### 基本構造 Basic structure  
+#### Web application  
+![web_application](https://user-images.githubusercontent.com/93259837/139513838-3e22fb8e-f9b7-4c88-aa7c-2ec4aa72cdd4.png)  
+* アップロードページ作成 Upload page
+* 顔領域切り抜き処理作成 Crop face area process
+* 顔選択画面作成 Select a face
+* 確認画面作成 Confirm page
+* 類似度計算処理作成 Compute similarity
+* 結果表示画面作成 Result page  
+
+#### facial data application  
+![make_data_application](https://user-images.githubusercontent.com/93259837/139513900-7dd066a4-5295-4ae6-aa49-d3e6feb01cd6.png)  
+* 映像データ入力 Video data input
+* フレームごとに顔検出 Face detection for each frame
+* 顔座標から128次元データを作成 Create 128-dimensional data from face coordinates
+* 数値データと避難所データを作成 Create numerical face data and shelter's data
+
+## ユーザーがプロジェクトを開始する方法 How the user starts the project  
 ```bash
 $ pip install -r requirements.txt
 ``` 

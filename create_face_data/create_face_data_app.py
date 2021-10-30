@@ -91,9 +91,8 @@ while True:
     # if cnt > 10:
     #     break
 
-
-np.savez(
-    'npKnown',
-    face_encodings_list,
-    name_list
-)
+    np.savez(
+        'npKnown',
+        face_encodings_list,
+        name_list
+    )

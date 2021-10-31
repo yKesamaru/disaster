@@ -1,6 +1,11 @@
-# disaster
-Disaster is a face search system for disasters using `dlib`, and what is written in `python`.
-How can you find a loved one in the event of a disaster? Disaster allows you to search for the face of the person you are looking for from the video taken by the camera installed in the shelter.
+# Disaster
+Disaster is a face search system for disasters using `dlib`, and what is written in `python`. How can you find a loved one in the event of a disaster? Disaster allows you to search for the face of the person you are looking for from the video taken by the camera installed in the shelter.
+
+### Disasterの特徴
+* シェルターに設置されているカメラの映像から、元の顔画像に復元不可能な数値データに変換します
+Converts the image taken by a camera installed in the shelter into numerical data that cannot be restored to the original face image.
+* 家族の写真をDisaster Webアプリケーションにアップロードすると、似ている人を自動的に探し、いつどのシェルターに被災者がいたかという情報を表示します When upload a family photo to the Disaster web application, it will automatically look for similar people and display information about when and in which shelter the victim was.
+* 自治体や組織は自由にシステムを利用する事が可能です Local governments and organizations can freely use Disaster. 
 
 ![demo](https://user-images.githubusercontent.com/93259837/139436058-758f8c10-1dd2-4e67-ad23-5a9f6b2dbd7a.gif)
 
@@ -18,10 +23,6 @@ If the situation when victim cannot be used smartphone, it is difficult for the 
 こうした状況は自然災害だけではなく戦争や内戦によって、世界中で発生しています。
 
 These situations are occurring all over the world not only natural disasters but also wars or civil wars. 
-
-このプロジェクトでは世界中の人々が自由にシステムを構築できるようにするためgithubで公開します。  
-
-In this project, I'll publish it on github so that people who lived all over the world can build the system for free.
 
 ## 構成 Component
 このシステムは3つのブロックから成り立っています。  
@@ -73,21 +74,22 @@ disaster
 * 顔座標から128次元データを作成 Create 128-dimensional data from face coordinates
 * 数値データと避難所データを作成 Create numerical face data and shelter's data
 
-## ユーザーがプロジェクトを開始する方法 How the user starts the project  
+## Usage  
 ```bash
 $ pip install -r requirements.txt
 ``` 
-
-```python
-opencv-python
-dlib
-face_recognition
-numpy
-flask
-pillow
+```bash
+$ cd web_app
+$ export FLASK_APP=main.py
+$ flask run
+ * Serving Flask app 'main.py' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
-
-I'm creating a document.  
+*** Access `http://127.0.0.1:5000/` ***
 
 ## プロジェクトの維持、貢献 Project maintenance and contribution
 活動が広く広がることを願います。英訳出来る方がいらっしゃると大変助かります。  

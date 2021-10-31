@@ -1,10 +1,11 @@
 import os
-from flask import (Flask, render_template, request)
+import random
+
 import cv2
 import face_recognition
-from PIL import Image
 import numpy as np
-import random
+from flask import Flask, render_template, request
+from PIL import Image
 
 app = Flask(__name__)
 

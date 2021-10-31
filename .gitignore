@@ -46,3 +46,5 @@ static/faces/96family-5412437_960_720.jpg
 案/範囲を選択_b(004).png
 web_app/__pycache__/main.cpython-39.pyc
 .gitignore
+web_app/.vscode/launch.json
+web_app/.vscode/settings.json

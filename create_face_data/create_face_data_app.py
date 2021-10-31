@@ -72,7 +72,7 @@ def date_format():
     now = datetime.now()
     return shelter_name + '_' + str(now.year) + '_' + str(now.month) + '_'+str(now.day) + '_' + str(now.hour) + '_' + str(now.minute) + '_' + str(now.second)
 
-# cnt=0
+cnt=0
 face_encodings_list=[]
 name_list =[]
 while True:
@@ -84,15 +84,21 @@ while True:
     face_encodings = face_recognition.face_encodings(
         small_frame, face_location_list, jitters, model)
 
-    face_encodings_list.append(face_encodings)
     name_list.append(date_format())
+    face_encodings_list.append(face_encodings[0])
 
-    # cnt=cnt+1
-    # if cnt > 10:
+    # for test
+    # cv2.imshow('test', small_frame)
+    # if cv2.waitKey(1) & 0xFF == ord('q'):
     #     break
 
-    np.savez(
-        'npKnown',
-        face_encodings_list,
-        name_list
-    )
+    # for test
+    cnt=cnt+1
+    if cnt > 10000:
+        break
+
+np.savez(
+    'npKnown',
+    name_list,
+    face_encodings_list
+)

@@ -18,11 +18,12 @@ known_face_encodings_ndarray = npKnown[B]
 
 # from ndarray to list ----
 known_face_names_list = known_face_names_ndarray.tolist()
-list=[]
+list = []
 for i in known_face_encodings_ndarray:
     list.append(i)
 known_face_encodings_list = list
-# ------------------------- 
+# -------------------------
+
 
 @app.route('/')
 def index():
@@ -37,6 +38,7 @@ def goto_upload_page():
         'upload_page.html'
     )
 
+
 @app.route('/terms_n_conditions')
 def terms_n_conditions():
     return render_template(
@@ -49,18 +51,20 @@ def send():
     img_file = request.files['img_file']
     img_file.save(os.path.join(UPLOAD_FOLDER, img_file.filename))
 
-
-    check_images_file_npData = cv2.imread(os.path.join(UPLOAD_FOLDER, img_file.filename))
+    check_images_file_npData = cv2.imread(
+        os.path.join(UPLOAD_FOLDER, img_file.filename))
 
     # BGRからRGBへ変換
     check_images_file_npData = check_images_file_npData[:, :, ::-1]
 
     # face_locationsを算出
-    face_locations = face_recognition.face_locations(check_images_file_npData, 0, 'cnn')
+    face_locations = face_recognition.face_locations(
+        check_images_file_npData, 0, 'cnn')
     face_file_name_list = []
     for (top, right, bottom, left) in face_locations:
         img = Image.fromarray(check_images_file_npData)
-        imgCroped = img.crop((left -20,top -20,right +20,bottom +20)).resize((200, 200))
+        imgCroped = img.crop(
+            (left - 20, top - 20, right + 20, bottom + 20)).resize((200, 200))
         rand = random.randint(0, 100)
         face_file_name = 'static/faces/' + str(rand) + img_file.filename
         face_file_name_list.append(face_file_name)
@@ -69,31 +73,37 @@ def send():
     if len(face_locations) > 0:
         return render_template(
             'send.html',
-            face_locations = face_locations,
-            face_file_name_list = face_file_name_list
+            face_locations=face_locations,
+            face_file_name_list=face_file_name_list
         )
     else:
         return render_template('index.html')
 
-@app.route('/static/faces/<name>.html') 
+
+@app.route('/static/faces/<name>.html')
 def name_path(name):
     name_path = 'static/faces/' + name
     selected_face_npData = cv2.imread(name_path)
-    face_location = face_recognition.face_locations(selected_face_npData, 0, 'cnn')
-    face_encoding = face_recognition.face_encodings(selected_face_npData, face_location, 0, 'small')
+    face_location = face_recognition.face_locations(
+        selected_face_npData, 0, 'cnn')
+    face_encoding = face_recognition.face_encodings(
+        selected_face_npData, face_location, 0, 'small')
 
-    matches = face_recognition.compare_faces(known_face_encodings_ndarray, face_encoding, 0.35)
+    matches = face_recognition.compare_faces(
+        known_face_encodings_ndarray, face_encoding, 0.35)
     # matches = face_recognition.compare_faces(known_face_encodings_ndarray, face_encoding, 0.80)
-    face_distances = face_recognition.face_distance(known_face_encodings_ndarray, face_encoding)
+    face_distances = face_recognition.face_distance(
+        known_face_encodings_ndarray, face_encoding)
     best_match_index = np.argmin(face_distances)
-    known_face_name = "couldn't find that person"
+    shelter_name = "couldn't find that person"
+    date = 'None'
     if matches[best_match_index]:
-        known_face_name = known_face_names_list[best_match_index]
-        known_face_name, _ = known_face_name.split('_', maxsplit=1)
-    # print( "url={}".format( request.url ))
-    # return "name={}".format( name )
+        shelter_name = known_face_names_list[best_match_index]
+        print('sheltername is ', shelter_name)
+        shelter_name, date = shelter_name.split('_', maxsplit=1)
     return render_template(
         'search_result.html',
-        name = name,
-        known_face_name = known_face_name
+        name=name,
+        shelter_name=shelter_name,
+        date=date
     )

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if known_face_name == "couldn't find that person" %}
+{% if shelter_name == "couldn't find that person" %}
 <h1 class="title">Sorry, Not found</h1>
 {% else %}
 <h1 class="title">We found!</h1>
@@ -15,14 +15,12 @@
 
 <div class="box">
     <p class="subtitle"><strong>Detailed information</strong></p>
-    {% if known_face_name == "couldn't find that person" %}
+    {% if shelter_name == "couldn't find that person" %}
     <p>We couldn't find your loved one.</p>
     <p>Check again a little later. </p>
     {% else %}
-    {{known_face_name}}<br>
-    hidaka: hinanjo<br>
-    2021 14 May<br>
-    14:54<br>
+    {{ shelter_name }}<br>
+    Date: {{ date }}<br>
     {% endif %}
 </div>
 <a href="{{ url_for('index') }}">

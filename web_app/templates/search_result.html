@@ -2,9 +2,9 @@
 {% block content %}
 
 {% if shelter_name == "couldn't find that person" %}
-<h1 class="title">Sorry, Not found</h1>
+    <h1 class="title">Sorry, Not found</h1>
 {% else %}
-<h1 class="title">We found!</h1>
+    <h1 class="title">We found!</h1>
 {% endif %}
 
 <div class="box">
@@ -16,11 +16,15 @@
 <div class="box">
     <p class="subtitle"><strong>Detailed information</strong></p>
     {% if shelter_name == "couldn't find that person" %}
-    <p>We couldn't find your loved one.</p>
-    <p>Check again a little later. </p>
+        <p>We couldn't find your loved one.</p>
+        <p>Check again a little later. </p>
     {% else %}
-    {{ shelter_name }}<br>
-    Date: {{ date }}<br>
+        <p>&#128467; {{ date }}</p>
+        <!-- Disable html escaping -->
+        <p>{{ shelter_name | safe }}</p>
+        <!-- replace charactors -->
+        <!-- <i>{{ shelter_name | replace('_', ':') }}</i><br> -->
+
     {% endif %}
 </div>
 <a href="{{ url_for('index') }}">

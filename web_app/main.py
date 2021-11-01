@@ -55,10 +55,9 @@ def send():
     check_images_file_npData = cv2.imread(
         os.path.join(UPLOAD_FOLDER, img_file.filename))
 
-    # BGRからRGBへ変換
+    # convert BGR to RGB
     check_images_file_npData = check_images_file_npData[:, :, ::-1]
 
-    # face_locationsを算出
     face_locations = face_recognition.face_locations(
         check_images_file_npData, 0, 'cnn')
     face_file_name_list = []

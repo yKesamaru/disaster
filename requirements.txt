@@ -1,7 +1,8 @@
-opencv-python
 dlib
-face_recognition
+face-recognition
+face-recognition-models
 numpy
-PIL
+opencv-python
+Pillow
 flask
 jinja2

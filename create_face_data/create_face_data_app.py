@@ -7,11 +7,17 @@ import numpy as np
 input_movie = 'people.mp4'
 SET_WIDTH = 800
 set_area = 'NONE'
+SET_FPS = 10
 upsampling = 0
 mode = 'cnn'
-jitters = 10
+jitters = 0
 model = 'small'
-shelter_name = 'tokyo'
+shelter_name = 'tokyo 1st community disaster center'
+phone_number = '&#128241; <a href="tel:123-45-6789">123-45-6789</a>'
+# location = '東京都港区'
+location = '<iframe src="https://maps.google.co.jp/maps?output=embed&q=東京駅&z=16" width="70%" frameborder="0" scrolling="no" ></iframe>'
+
+adress = shelter_name + '<br>' + phone_number + '<br>' + location
 
 
 def video_capture(input_movie):
@@ -25,6 +31,8 @@ def video_capture(input_movie):
     if ret == False:
         print('Input video data is inappropriate.')
         exit()
+    
+    # vcap.set(cv2.CAP_PROP_FPS, SET_FPS)
 
     return vcap, frame
 
@@ -66,17 +74,31 @@ def set_resize(vcap, frame, SET_WIDTH, set_area):
 def set_fps(vcap):
     fps = vcap.get(cv2.CAP_PROP_FPS)
     fps = int(fps)
+    return fps
 
 
 def date_format():
     now = datetime.now()
-    return shelter_name + '_' + str(now.year) + '_' + str(now.month) + '_'+str(now.day) + '_' + str(now.hour) + '_' + str(now.minute) + '_' + str(now.second)
+    year = str(now.year)
+    month = str(now.month)
+    day = str(now.day)
+    hour = str(now.hour)
+    minute = str(now.minute)
+
+    return adress + '_' + day + '/' + month + '/' + year + ', ' + hour + '.' + minute
 
 cnt=0
+fps_counter = 0
 face_encodings_list=[]
 name_list =[]
 while True:
     vcap, frame = video_capture(input_movie)
+    # set fps --------
+    if fps_counter < 3:
+        fps_counter = fps_counter + 1
+        continue
+    fps_counter = 0
+    # ----------------
     small_frame = set_resize(vcap, frame, SET_WIDTH, set_area)
     small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB)
     face_location_list = face_recognition.face_locations(
@@ -94,11 +116,11 @@ while True:
 
     # for test
     cnt=cnt+1
-    if cnt > 10000:
+    if cnt > 10:
         break
 
 np.savez(
     'npKnown',
     name_list,
-    face_encodings_list
+    face_encodings_list,
 )

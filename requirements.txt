@@ -4,3 +4,4 @@ face_recognition
 numpy
 PIL
 flask
+jinja2

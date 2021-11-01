@@ -3,7 +3,8 @@ Disaster is a face search system for disasters using `dlib`, and what is written
 
 How can you find a loved one in the event of a disaster? Disaster allows you to search for the face of the person you are looking for from the video taken by the camera installed in the shelter.  
 
-![demo](https://user-images.githubusercontent.com/93259837/139436058-758f8c10-1dd2-4e67-ad23-5a9f6b2dbd7a.gif)
+![demo](https://user-images.githubusercontent.com/93259837/139436058-758f8c10-1dd2-4e67-ad23-5a9f6b2dbd7a.gif)  
+![Screenshot 2021-11-02 at 08-24-56 Screenshot](https://user-images.githubusercontent.com/93259837/139755110-9381b268-0261-415c-bc53-45b3119a47f8.png)
 
 ## Project background
 It is an urgent task to find a solution to this situation where the safety of a loved one cannot be confirmed in a disaster situation. 

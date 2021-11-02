@@ -4,6 +4,12 @@ import face_recognition
 from datetime import datetime
 import numpy as np
 
+# for test ---
+# import sys
+# import pprint
+# pprint.pprint(sys.path)
+# ------------
+
 input_movie = 'people.mp4'
 SET_WIDTH = 800
 set_area = 'NONE'
@@ -14,7 +20,6 @@ jitters = 0
 model = 'small'
 shelter_name = 'tokyo 1st community disaster center'
 phone_number = '&#128241; <a href="tel:123-45-6789">123-45-6789</a>'
-# location = '東京都港区'
 location = '<iframe src="https://maps.google.co.jp/maps?output=embed&q=東京駅&z=16" width="70%" frameborder="0" scrolling="no" ></iframe>'
 
 adress = shelter_name + '<br>' + phone_number + '<br>' + location
@@ -31,7 +36,7 @@ def video_capture(input_movie):
     if ret == False:
         print('Input video data is inappropriate.')
         exit()
-    
+
     # vcap.set(cv2.CAP_PROP_FPS, SET_FPS)
 
     return vcap, frame
@@ -87,10 +92,12 @@ def date_format():
 
     return adress + '_' + day + '/' + month + '/' + year + ', ' + hour + '.' + minute
 
-cnt=0
+
+cnt = 0
 fps_counter = 0
-face_encodings_list=[]
-name_list =[]
+save_counter = 0
+face_encodings_list = []
+name_list = []
 while True:
     vcap, frame = video_capture(input_movie)
     # set fps --------
@@ -111,13 +118,20 @@ while True:
 
     # for test
     # cv2.imshow('test', small_frame)
-    # if cv2.waitKey(1) & 0xFF == ord('q'):
+    # if cv2.waitKey(0) & 0xFF == ord('q'):
     #     break
 
     # for test
-    cnt=cnt+1
-    if cnt > 10:
-        break
+    cnt = cnt+1
+    if cnt > 100:
+        save_counter =+ 1
+        print('save: ', save_counter)
+        np.savez(
+            'npKnown',
+            name_list,
+            face_encodings_list
+        )
+        cnt = 0
 
 np.savez(
     'npKnown',

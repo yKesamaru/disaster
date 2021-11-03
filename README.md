@@ -42,9 +42,9 @@ These situations are occurring all over the world not only natural disasters but
 ```
 Clone project from GitHub
 ```
-```bash
-$ pip install -r requirements.txt
-``` 
+Build python runtime environment described <a href="doc/Build_python_runtime_environment.md">here</a>.
+
+### When trying the disaster web application
 ```bash
 $ cd web_app
 $ export FLASK_APP=main.py
@@ -57,6 +57,12 @@ $ flask run
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 *** Access `http://127.0.0.1:5000/` ***
+
+### When trying to create numerical face data
+Activate the Python virtual environment in advance.
+```bash
+$ python create_face_data_app.py 
+```
 
 ## Component
 This system consists of three blocks.

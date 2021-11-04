@@ -1,8 +1,8 @@
-from os import write
 import cv2
 import face_recognition
 from datetime import datetime
 import numpy as np
+import PySimpleGUI as sg
 
 # for test ---
 # import sys
@@ -11,9 +11,12 @@ import numpy as np
 # ------------
 
 input_movie = 'people.mp4'
-SET_WIDTH = 800
+# input_movie = 'test.mp4'
+# input_movie = 'test_short.mp4'
+SET_WIDTH = 600
 set_area = 'NONE'
 SET_FPS = 10
+FRAME_DROP = 1
 upsampling = 0
 mode = 'cnn'
 jitters = 0
@@ -25,28 +28,11 @@ location = '<iframe src="https://maps.google.co.jp/maps?output=embed&q=東京駅
 adress = shelter_name + '<br>' + phone_number + '<br>' + location
 
 
-def video_capture(input_movie):
-    vcap = cv2.VideoCapture(input_movie, cv2.CAP_FFMPEG)
-
-    if not vcap.isOpened():
-        print('Input video data is inappropriate.')
-        exit()
-
-    ret, frame = vcap.read()
-    if ret == False:
-        print('Input video data is inappropriate.')
-        exit()
-
-    # vcap.set(cv2.CAP_PROP_FPS, SET_FPS)
-
-    return vcap, frame
-
-
 def set_resize(vcap, frame, SET_WIDTH, set_area):
     height = vcap.get(cv2.CAP_PROP_FRAME_HEIGHT)
     width = vcap.get(cv2.CAP_PROP_FRAME_WIDTH)
-    height = int(height)
-    width = int(width)
+    # height = int(height)
+    # width = int(width)
 
     SET_HEIGHT = int((SET_WIDTH * height) / width)
 
@@ -78,8 +64,9 @@ def set_resize(vcap, frame, SET_WIDTH, set_area):
 
 def set_fps(vcap):
     fps = vcap.get(cv2.CAP_PROP_FPS)
-    fps = int(fps)
-    return fps
+    # If the input source is a camera, 'set' can be used.
+    is_success = vcap.set(cv2.CAP_PROP_FPS, SET_FPS)
+    return is_success
 
 
 def date_format():
@@ -93,38 +80,69 @@ def date_format():
     return adress + '_' + day + '/' + month + '/' + year + ', ' + hour + '.' + minute
 
 
+sg.theme('Reddit')
+
+layout = [
+    [sg.Text('Disaster sample window')],
+    [sg.Image(key='display')],
+    [sg.Button('終了', key='terminate', button_color='red')]
+]
+
+window = sg.Window('Disaster sample window', layout)
+
+
 cnt = 0
 fps_counter = 0
 save_counter = 0
 face_encodings_list = []
 name_list = []
+
+vcap = cv2.VideoCapture(input_movie, cv2.CAP_FFMPEG)
+if not vcap.isOpened():
+    print('Input video data is not opened.')
+    exit()
+
 while True:
-    vcap, frame = video_capture(input_movie)
+    ret, frame = vcap.read()
+    if ret == False:
+        print('Input video data cannot read.')
+        break
+
+    is_success = set_fps(vcap)
     # set fps --------
-    if fps_counter < 3:
-        fps_counter = fps_counter + 1
-        continue
-    fps_counter = 0
+    # < TEST >
+    if is_success == False:
+        fps_counter += 1
+        if fps_counter < FRAME_DROP:
+            # print('fps_counter: ', fps_counter)
+            continue
+        fps_counter = 0
     # ----------------
     small_frame = set_resize(vcap, frame, SET_WIDTH, set_area)
-    small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB)
+    # small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB)
+
+    event, _ = window.read(timeout=1)
+
+    imgbytes = cv2.imencode(".png", small_frame)[1].tobytes()
+    window["display"].update(data=imgbytes)
+    if event == 'terminate':
+        break
+
     face_location_list = face_recognition.face_locations(
         small_frame, upsampling, mode)
     face_encodings = face_recognition.face_encodings(
         small_frame, face_location_list, jitters, model)
 
-    name_list.append(date_format())
-    face_encodings_list.append(face_encodings[0])
+    try:
+        name_list.append(date_format())
+        face_encodings_list.append(face_encodings[0])
+    except:
+        pass
 
-    # for test
-    # cv2.imshow('test', small_frame)
-    # if cv2.waitKey(0) & 0xFF == ord('q'):
-    #     break
-
-    # for test
+    # < TEST >
     cnt = cnt+1
     if cnt > 100:
-        save_counter =+ 1
+        save_counter += 1
         print('save: ', save_counter)
         np.savez(
             'npKnown',
@@ -132,6 +150,9 @@ while True:
             face_encodings_list
         )
         cnt = 0
+
+vcap.release()
+cv2.destroyAllWindows()
 
 np.savez(
     'npKnown',

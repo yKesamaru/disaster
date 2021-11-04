@@ -37,6 +37,18 @@ These situations are occurring all over the world not only natural disasters but
 * Unix-like OS
 * NVIDIA GeForce GTX 1660 Ti +
 * Python 3.7 +
+```bash
+execution environment (Developer)
+Kernel	Linux 5.4.0-89-generic (x86_64)
+Version	#100~18.04.1-Ubuntu SMP Wed Sep 29 10:59:42 UTC 2021
+C Library	GNU C Library / (Ubuntu GLIBC 2.27-3ubuntu1.4) 2.27
+Distribution	Ubuntu 18.04.6 LTS
+Renderer	NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2
+Version	4.6.0 NVIDIA 470.63.01
+AMD Ryzen 5 1400 Quad-Core Processor
+Total Memory	16389096 KiB
+Python 3.7.11(pyenv)
+```
   
 ## Usage  
 ```
@@ -61,6 +73,7 @@ $ flask run
 ### When trying to create numerical face data
 Activate the Python virtual environment in advance.
 ```bash
+$ cd create_face_data
 $ python create_face_data_app.py 
 ```
 

@@ -8,17 +8,12 @@
     </label>
     <input class="button is-primary" type="submit" value="upload">
 </form>
-<!-- <div class="box"> -->
-    <img id="file-preview" style="width: 50%;">
-<!-- </div> -->
+<img id="file-preview" style="width: 70%; margin: 1em; border-radius: 1em;">
 
 <script>
     document.getElementById('selected_file').addEventListener('change', function (e) {
-        // 1枚だけ表示する
         var file = e.target.files[0];
-        // ファイルのブラウザ上でのURLを取得する
         var blobUrl = window.URL.createObjectURL(file);
-        // img要素に表示
         var img = document.getElementById('file-preview');
         img.src = blobUrl;
     });

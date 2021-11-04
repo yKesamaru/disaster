@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+        <div class="box">
+                <h1 class="title"> No face was found in the uploaded photo.</h1>
+                <p>If you see this message even though faces in uploaded photo..</p>
+                <ul>
+                    <li>
+                        The face must be larger than 80px in height and 80px in width.
+                    </li>
+                    <li>
+                        Faces that facing down or side tend to be difficult to recognize.
+                    </li>
+                </ul>
+                <figure >
+                </figure>
+                <a href="{{ url_for('goto_upload_page') }}">
+                    <button class="button is-primary">Re-upload</button>
+                </a>
+        </div>
+{% endblock %}

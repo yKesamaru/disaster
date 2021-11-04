@@ -47,6 +47,13 @@ def terms_n_conditions():
     )
 
 
+@app.route('/no_face')
+def no_face():
+    return render_template(
+        'no_face.html'
+    )
+
+
 @app.route('/uploads', methods=['get', 'post'])
 def send():
     img_file = request.files['img_file']
@@ -57,6 +64,11 @@ def send():
 
     # convert BGR to RGB
     check_images_file_npData = check_images_file_npData[:, :, ::-1]
+    # < test > -------
+    # cv2.imshow('', check_images_file_npData)
+    # cv2.waitKey(500)
+    # cv2.destroyAllWindows()
+    # ----------------
 
     face_locations = face_recognition.face_locations(
         check_images_file_npData, 0, 'cnn')
@@ -77,7 +89,8 @@ def send():
             face_file_name_list=face_file_name_list
         )
     else:
-        return render_template('index.html')
+        # return render_template('index.html')
+        return render_template('no_face.html')
 
 
 @app.route('/static/faces/<name>.html')
@@ -91,7 +104,7 @@ def name_path(name):
 
     matches = face_recognition.compare_faces(
         known_face_encodings_ndarray, face_encoding, 0.35)
-    # matches = face_recognition.compare_faces(known_face_encodings_ndarray, face_encoding, 0.80)
+    # matches = face_recognition.compare_faces(known_face_encodings_ndarray, face_encoding, 0.45)
     face_distances = face_recognition.face_distance(
         known_face_encodings_ndarray, face_encoding)
     best_match_index = np.argmin(face_distances)
@@ -107,3 +120,5 @@ def name_path(name):
         shelter_name=shelter_name,
         date=date
     )
+ 
+    # Deleting images in /static/faces.

@@ -1,6 +1,8 @@
+import shutil
+from datetime import datetime
+
 import cv2
 import face_recognition
-from datetime import datetime
 import numpy as np
 import PySimpleGUI as sg
 
@@ -139,7 +141,7 @@ while True:
     except:
         pass
 
-    # < TEST >
+    # For updating npKnown.npz from time to time. --
     cnt = cnt+1
     if cnt > 100:
         save_counter += 1
@@ -149,7 +151,9 @@ while True:
             name_list,
             face_encodings_list
         )
+        shutil.copy2("npKnown.npz", "../web_app/npKnown.npz")
         cnt = 0
+    # ----------------------------------------------
 
 vcap.release()
 cv2.destroyAllWindows()
@@ -159,3 +163,4 @@ np.savez(
     name_list,
     face_encodings_list,
 )
+shutil.copy2("npKnown.npz", "../web_app/npKnown.npz")

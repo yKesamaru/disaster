@@ -42,7 +42,29 @@ Pillow==8.4.0
 typing-extensions==3.10.0.2
 Werkzeug==2.0.2
 zipp==3.6.0
-
 ```
-
-
+## Check if dlib supports cuda
+```bash
+$ python
+Python 3.7.11 (default, Nov  3 2021, 08:07:41) 
+[GCC 7.5.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import dlib
+>>> dlib.DLIB_USE_CUDA
+True
+>>> 
+```
+## Check if opencv-python supports FFMPEG
+```bash
+$ python -c 'import cv2; print(cv2.getBuildInformation())'
+  Video I/O:
+    DC1394:                      NO
+    FFMPEG:                      YES
+      avcodec:                   YES (58.91.100)
+      avformat:                  YES (58.45.100)
+      avutil:                    YES (56.51.100)
+      swscale:                   YES (5.7.100)
+      avresample:                NO
+    GStreamer:                   NO
+    v4l/v4l2:                    YES (linux/videodev2.h)
+```

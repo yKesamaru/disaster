@@ -1,13 +1,17 @@
+<div style="text-align: right"><a href="doc/README_ja.md">[ja]</a></div>  
+
 # Disaster
 Disaster is a face search system for disasters using `dlib`, and what is written in `python`.  
 
 How can you find a loved one in the event of a disaster? Disaster allows you to search for the face of the person you are looking for from the video taken by the camera installed in the shelter.  
 
+Disaster is most privacy-friendly.The face information is replaced with irrecoverable numerical data, and even the developer cannot restore the original face image.
+
 ![demo](./demo.gif  )  
 ![screenshot](https://user-images.githubusercontent.com/93259837/139792630-06f66eef-2b41-4bbf-8c00-6c57ac811974.png)
 
 ## Project background
-It is an urgent task to find a solution to this situation where the safety of a loved one cannot be confirmed in a disaster situation. 
+It is an urgent task to find a solution to the situation where the safety of a loved one cannot be confirmed in the disaster. 
 Currently, various companies are working to solve problems bringing together feasible technologies. 
 
 However, pre-registration before the disaster is often required, and/or family discussions are a prerequisite in advance. 
@@ -17,21 +21,12 @@ If the situation when victim cannot be used smartphone, it is difficult for the 
 
 These situations are occurring all over the world not only natural disasters but also wars or civil wars.  
 
-災害が発生した状況に於いて最愛の人の安否が確認できない、この状況の解決方法を模索することは喫緊の課題です。現在様々な企業が実現可能な技術を持ち寄り課題の解決に取り組んでいます。  
-しかしながら災害前の事前登録が必要であったり、前もって家族の話し合いが前提であったりするため、災害前に何らかの対策をしていない場合災害直後に家族の安否を確認する事は困難であると予想されます。  
-もし被災者のスマートフォンが使用できない状況の場合、災害直後に被災者から家族へ連絡を試みることは困難です。  
-こうした状況は自然災害だけではなく戦争や内戦によって、世界中で発生しています。
-
-
 ## Features
   * Converts the image taken by a camera installed in the shelter into numerical data that cannot be restored to the original face image.  
-  シェルターに設置されているカメラの映像から元の顔画像に復元不可能な数値データに変換します  
 
 * When upload a family photo to the Disaster web application, it will automatically look for similar faces and display information about when and in which shelter the victim was.  
-家族の写真をDisaster Webアプリケーションにアップロードすると、似ている人を自動的に探し、いつどのシェルターに被災者がいたかという情報を表示します  
 
 * Local governments, organizations and others can freely use Disaster.  
-自治体や組織は自由にシステムを利用する事が可能です  
 
 ## Requirements
 * Unix-like OS
@@ -52,11 +47,11 @@ Python 3.7.11(pyenv)
   
 ## Usage  
 ```
-Clone project from GitHub
+$ git clone https://github.com/yKesamaru/disaster.git
 ```
-Build python runtime environment described <a href="doc/Build_python_runtime_environment.md">here</a>.
+Build python runtime environment and others described <a href="doc/Build_python_runtime_environment.md">here</a>.
 
-### When trying the disaster web application
+### When trying the Disaster web application
 ```bash
 $ cd web_app
 $ export FLASK_APP=main.py
@@ -89,8 +84,6 @@ disaster
 ```
 People who want to find a family upload a family photo. It converts to non-recoverable numerical data on the server and searches for similar faces in the footage taken by the shelter's camera. Date, time and the shelter's name are displayed on the smartphone.  
 
-家族を探したい人が家族の写真をアップロードします。サーバーで復元不可能な数値データに変換し、シェルターのカメラから撮影された映像から似ている顔を検索します。スマートフォンには日時と避難所名が表示されます。  
-
 ### 2. The Application for creating numerical face data from camera
 ![make_data_application](https://user-images.githubusercontent.com/93259837/139513900-7dd066a4-5295-4ae6-aa49-d3e6feb01cd6.png)  
 ```bash
@@ -101,12 +94,8 @@ disaster
 ```
 All the faces taken by the camera installed in the shelter are converted into numerical data.  
 
-シェルターに設置されたカメラで撮影された大勢の顔を全てデータ化します。  
-
 ### 3. Data synchronization between servers
 The face data file is shared between each server to prevent the entire system from going down.  
-
-顔データファイルを各サーバー間で共有し、システム全体のダウンを防止します。  
 
 ## Project maintenance and contribution
 I hope that the activities will spread widely. It would be very helpful if someone could translate it into English. 

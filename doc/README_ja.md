@@ -8,7 +8,7 @@ Disasterとは`dlib`を使った災害時安否確認用顔認証システムで
 
 Disasterはプライバシーに最も配慮しています。顔情報は復元不可能な数値データに置き換えられ、たとえ開発者であっても元の顔画像に復元できません。  
 
-![demo](./demo.gif  )  
+![demo](../demo.gif  )  
 ![screenshot](https://user-images.githubusercontent.com/93259837/139792630-06f66eef-2b41-4bbf-8c00-6c57ac811974.png)  
 
 ## 背景
@@ -46,7 +46,7 @@ Python 3.7.11(pyenv)
 ```
 $ git clone https://github.com/yKesamaru/disaster.git
 ```
-<a href="doc/Build_python_runtime_environment.md">こちら</a>を参照してPython実行環境等を構築して下さい。
+<a href="./Build_python_runtime_environment.md">こちら</a>を参照してPython実行環境等を構築して下さい。
 
 ### Disaster webアプリケーションを試すには
 ```bash

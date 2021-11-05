@@ -1,4 +1,4 @@
-<div style="text-align: right"><a href="doc/README.md">[en]</a></div>  
+<div style="text-align: right"><a href="../README.md">[en]</a></div>  
 
 
 # Disaster（ディザスター）

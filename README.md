@@ -16,8 +16,8 @@ Currently, various companies are working to solve problems bringing together fea
 
 However, pre-registration before the disaster is often required, and/or family discussions are a prerequisite in advance. 
 
-So it is expected that it will be difficult to confirm the safety of the family after the disaster if some measures are not taken before the disaster. 
-If the situation when victim cannot be used smartphone, it is difficult for the family to try to contact victim immediately after the disaster. 
+So it is expected that it will be difficult to confirm the safety of family after the disaster if some measures are not taken before the disaster. 
+If the situation when victim cannot be used smartphone, it is so difficult for family to try to contact victim immediately after the disaster. 
 
 These situations are occurring all over the world not only natural disasters but also wars or civil wars.  
 
@@ -77,9 +77,10 @@ This system consists of three blocks.
 ### 1. Web application  
 ![web_application](https://user-images.githubusercontent.com/93259837/139513838-3e22fb8e-f9b7-4c88-aa7c-2ec4aa72cdd4.png)  
 ```bash
-disaster
+Disaster
 └ web_app
     ├ main.py
+    ├ npKnown.npz
     └ others
 ```
 People who want to find a family upload a family photo. It converts to non-recoverable numerical data on the server and searches for similar faces in the footage taken by the shelter's camera. Date, time and the shelter's name are displayed on the smartphone.  
@@ -87,12 +88,20 @@ People who want to find a family upload a family photo. It converts to non-recov
 ### 2. The Application for creating numerical face data from camera
 ![make_data_application](https://user-images.githubusercontent.com/93259837/139513900-7dd066a4-5295-4ae6-aa49-d3e6feb01cd6.png)  
 ```bash
-disaster
+Disaster
 └ create_face_data
-    ├ create_face_data_app.py
-    └ others
+    ├ marge_npKnown.py
+    ├ npKnown_root.npz
+    ├ shelter01
+    │  ├ create_face_data_app.py
+    │  └ npKnown.npz
+    └ shelter02
+        ├ create_face_data_app.py
+        └ npKnown.npz
 ```
 All the faces taken by the camera installed in the shelter are converted into numerical data.  
+
+The shelter01 and shelter02 directories were created to represent multiple shelters.
 
 ### 3. Data synchronization between servers
 The face data file is shared between each server to prevent the entire system from going down.  

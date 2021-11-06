@@ -4,9 +4,9 @@
 <form method="post" enctype="multipart/form-data" action="uploads">
     <label class="button is-info">
         Choose a photo
-        <input type="file" input id="selected_file" name="img_file" style="display: none;">
+        <input type="file" id="selected_file" name="img_file" style="display: none;" accept="image/*">
     </label>
-    <input class="button is-primary" type="submit" value="upload">
+    <input id="upload" class="button is-primary" type="submit" value="upload" disabled>
 </form>
 <img id="file-preview" style="width: 70%; margin: 1em; border-radius: 1em;">
 
@@ -16,6 +16,7 @@
         var blobUrl = window.URL.createObjectURL(file);
         var img = document.getElementById('file-preview');
         img.src = blobUrl;
+        document.getElementById("upload").disabled = false;
     });
 </script>
 {% endblock %}

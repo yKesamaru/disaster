@@ -85,7 +85,7 @@ sg.theme('Reddit')
 layout = [
     [sg.Text('Disaster sample window')],
     [sg.Image(key='display')],
-    [sg.Button('終了', key='terminate', button_color='red')]
+    [sg.Button('terminate', key='terminate', button_color='red')]
 ]
 
 window = sg.Window('Disaster sample window', layout)

@@ -7,8 +7,9 @@ How can you find a loved one in the event of a disaster? Disaster allows you to 
 
 Disaster is most privacy-friendly.The face information is replaced with irrecoverable numerical data, and even the developer cannot restore the original face image.
 
-![demo](./demo.gif  )  
-![screenshot](https://user-images.githubusercontent.com/93259837/139792630-06f66eef-2b41-4bbf-8c00-6c57ac811974.png)
+![demo](./demo.gif)  
+![screenshot](https://user-images.githubusercontent.com/93259837/139792630-06f66eef-2b41-4bbf-8c00-6c57ac811974.png)  
+![window](./img/Disaster_sample_window_d.png)  
 
 ## Project background
 It is an urgent task to find a solution to the situation where the safety of a loved one cannot be confirmed in the disaster. 

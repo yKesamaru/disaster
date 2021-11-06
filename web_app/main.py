@@ -1,16 +1,25 @@
 import os
 import random
+import shutil
 
 import cv2
 import face_recognition
 import numpy as np
 from flask import Flask, render_template, request
 from PIL import Image
+from werkzeug.utils import secure_filename
+import werkzeug
+
+# ToDo
+# Check uploaded file
 
 app = Flask(__name__)
 
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# limit upload file size : 16MB
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+# app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
 
 npKnown = np.load('npKnown.npz', allow_pickle=True)
 A, B = npKnown.files
@@ -26,10 +35,30 @@ known_face_encodings_list = list
 # -------------------------
 
 
+@app.errorhandler(werkzeug.exceptions.RequestEntityTooLarge)
+def handle_over_max_file_size(error):
+    # print("werkzeug.exceptions.RequestEntityTooLarge")
+    return render_template(
+        'too_large_file.html'
+    )
+
+
 @app.route('/')
 def index():
+    # initialize -----
+    # remove /static/faces/*
+    shutil.rmtree('static/faces/')
+    os.mkdir('static/faces/')
+    # ----------------
     return render_template(
         'index.html'
+    )
+
+
+@app.route('/too_large_file')
+def too_large_file():
+    return render_template(
+        'too_large_file.html'
     )
 
 
@@ -57,17 +86,37 @@ def no_face():
 @app.route('/uploads', methods=['get', 'post'])
 def send():
     img_file = request.files['img_file']
-    img_file.save(os.path.join(UPLOAD_FOLDER, img_file.filename))
+    uploaded_file_path = os.path.join(
+        UPLOAD_FOLDER, secure_filename(img_file.filename))
+    # uploaded_file_path = os.path.join(UPLOAD_FOLDER, img_file.filename)
+    img_file.save(uploaded_file_path)
 
     check_images_file_npData = cv2.imread(
-        os.path.join(UPLOAD_FOLDER, img_file.filename))
+        os.path.join(UPLOAD_FOLDER, secure_filename(img_file.filename)))
 
     # convert BGR to RGB
     check_images_file_npData = check_images_file_npData[:, :, ::-1]
     # < test > -------
-    # cv2.imshow('', check_images_file_npData)
-    # cv2.waitKey(500)
-    # cv2.destroyAllWindows()
+    # import PySimpleGUI as sg
+    # layout = [
+    #     [sg.Image(filename='', key='display', pad=(0, 0))],
+    #     [sg.Button('terminate', key='terminate', pad=(0, 10))]
+    # ]
+    # window = sg.Window(
+    #     'Disaster test', layout, alpha_channel=1, margins=(0, 0),
+    #     grab_anywhere=True,
+    #     location=(350, 130), modal=True
+    # )
+    # while True:
+    #     event, _ = window.read(timeout=1)
+    #     check_images_file_npData = cv2.resize(check_images_file_npData, dsize=(700, 700))
+    #     imgbytes = cv2.imencode(".png", check_images_file_npData)[1].tobytes()
+    #     window["display"].update(data=imgbytes)
+    #     if event == 'terminate':
+    #         break
+    #     if event == sg.WIN_CLOSED:
+    #         break
+    # window.close()
     # ----------------
 
     face_locations = face_recognition.face_locations(
@@ -82,6 +131,9 @@ def send():
         face_file_name_list.append(face_file_name)
         imgCroped.save(face_file_name)
 
+    # remove uploaded photo image file
+    os.remove(uploaded_file_path)
+
     if len(face_locations) > 0:
         return render_template(
             'send.html',
@@ -89,7 +141,6 @@ def send():
             face_file_name_list=face_file_name_list
         )
     else:
-        # return render_template('index.html')
         return render_template('no_face.html')
 
 
@@ -114,11 +165,10 @@ def name_path(name):
         shelter_name = known_face_names_list[best_match_index]
         print('sheltername is ', shelter_name)
         shelter_name, date = shelter_name.split('_', maxsplit=1)
+
     return render_template(
         'search_result.html',
         name=name,
         shelter_name=shelter_name,
         date=date
     )
- 
-    # Deleting images in /static/faces.

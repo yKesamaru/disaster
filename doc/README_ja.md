@@ -1,4 +1,4 @@
-<div style="text-align: right"><a href="../README.md">[en]</a></div>  
+<div style="text-align: right"><a href="https://github.com/yKesamaru/disaster#disaster">[en]</a></div>  
 
 
 # Disaster（ディザスター）
@@ -74,7 +74,7 @@ $ python create_face_data_app.py
 ### 1. Webアプリケーション  
 ![web_application](https://user-images.githubusercontent.com/93259837/139513838-3e22fb8e-f9b7-4c88-aa7c-2ec4aa72cdd4.png)  
 ```bash
-disaster
+Disaster
 └ web_app
     ├ main.py
     └ others
@@ -84,12 +84,20 @@ disaster
 ### 2. 顔データ作成アプリケーション
 ![make_data_application](https://user-images.githubusercontent.com/93259837/139513900-7dd066a4-5295-4ae6-aa49-d3e6feb01cd6.png)  
 ```bash
-disaster
+Disaster
 └ create_face_data
-    ├ create_face_data_app.py
-    └ others
+    ├ marge_npKnown.py
+    ├ npKnown_root.npz
+    ├ shelter01
+    │  ├ create_face_data_app.py
+    │  └ npKnown.npz
+    └ shelter02
+        ├ create_face_data_app.py
+        └ npKnown.npz
 ```
 シェルターに設置されたカメラで撮影された大勢の顔を全てデータ化します。  
+
+複数のシェルターを表現するためshelter01, shelter02ディレクトリを設けています。   
 
 ### 3. サーバ間データ同期
 顔データファイルを各サーバー間で共有し、システム全体のダウンを防止します。  

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Too large size!</h1>
+<p>Upload photo file should be less than 16MB.</p>
+<a href="{{ url_for('goto_upload_page') }}">
+    <button class="button is-primary">Re-upload</button>
+</a>
+{% endblock %}

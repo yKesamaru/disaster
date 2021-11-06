@@ -90,6 +90,9 @@ layout = [
 
 window = sg.Window('Disaster sample window', layout)
 
+logo_image = cv2.imread("images/logo.png", cv2.IMREAD_UNCHANGED)
+rect01_image = cv2.imread("images/rect01.png", cv2.IMREAD_UNCHANGED)
+
 
 cnt = 0
 fps_counter = 0
@@ -119,6 +122,19 @@ while True:
     small_frame = set_resize(vcap, frame, SET_WIDTH, set_area)
     # small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB)
 
+    alpha = 0.3
+    overlay = small_frame.copy()
+    orgHeight, orgWidth = logo_image.shape[:2]
+    ratio = SET_WIDTH / orgWidth / 4  # テロップ幅は横幅の半分に設定
+    logo_image = cv2.resize(logo_image, None, fx=ratio, fy=ratio)
+    x1, y1, x2, y2 = 0, 0, logo_image.shape[1], logo_image.shape[0]
+    try:
+        small_frame[y1:y2, x1:x2] = small_frame[y1:y2, x1:x2] * \
+            (1 - logo_image[:, :, 3:] / 255) + \
+            logo_image[:, :, :3] * (logo_image[:, :, 3:] / 255)
+    except:
+        pass
+
     event, _ = window.read(timeout=1)
 
     imgbytes = cv2.imencode(".png", small_frame)[1].tobytes()
@@ -128,6 +144,28 @@ while True:
 
     face_location_list = face_recognition.face_locations(
         small_frame, upsampling, mode)
+
+    # < BUG > -------------------------------------------------
+    if len(face_location_list) > 0:
+        (top, right, bottom, left) = face_location_list[0]
+        face_width = right - left
+        face_height = bottom - top
+        rect_orgHeight, rect_orgWidth = rect01_image.shape[:2]
+        width_ratio = 1.0 * (face_width / rect_orgWidth)
+        height_ratio = 1.0 * (face_height / rect_orgHeight)
+        rect01_image = cv2.resize(
+            rect01_image, None, fx=width_ratio, fy=height_ratio)
+        rect01_x1, rect01_y1, rect01_x2, rect01_y2 = left, top, left + \
+            rect01_image.shape[1], top + rect01_image.shape[0]
+        try:
+            small_frame[rect01_y1:rect01_y2, rect01_x1:rect01_x2] = small_frame[rect01_y1:rect01_y2, rect01_x1:rect01_x2] * \
+                (1 - rect01_image[:, :, 3:] / 255) + \
+                rect01_image[:, :, :3] * (rect01_image[:, :, 3:] / 255)
+        except:
+            print('描画できない')
+            pass
+    # ---------------------------------------------------------
+
     face_encodings = face_recognition.face_encodings(
         small_frame, face_location_list, jitters, model)
 
@@ -147,7 +185,6 @@ while True:
             name_list,
             face_encodings_list
         )
-        # shutil.copy2("npKnown.npz", "../web_app/npKnown.npz")
         cnt = 0
     # ----------------------------------------------
 
@@ -159,4 +196,3 @@ np.savez(
     name_list,
     face_encodings_list,
 )
-# shutil.copy2("npKnown.npz", "../web_app/npKnown.npz")

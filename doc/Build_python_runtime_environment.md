@@ -1,5 +1,61 @@
 # Build python runtime environment
-Here is an example of building a python3.7 runtime environment using `pyenv` and `venv`.
+Here is an example of building a python3.7 runtime environment using `pyenv` and `venv`.  
+Installing pyenv is not required, but it is recommended to avoid affecting your system python.  
+
+## Install dependencies
+```bash
+$ sudo apt install -y gcc make build-essential libssl-dev libffi-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev liblzma-dev
+```  
+## Install codec
+```bash
+$ sudo apt install libavcodec-dev libavformat-dev libswscale-dev
+```  
+## Optional dependencies
+Please refer to <a href="https://docs.opencv.org/4.x/d2/de6/tutorial_py_setup_in_ubuntu.html">this page.</a>
+```bash
+sudo apt-get install libpng-dev
+sudo apt-get install libjpeg-dev
+sudo apt-get install libopenexr-dev
+sudo apt-get install libtiff-dev
+sudo apt-get install libwebp-dev
+```  
+
+## Install FFMPEG
+If FFMPEG is not installed, you should install it.  
+FFMPEG must be installed before installing opencv-python.  
+```bash
+$ sudo apt install ffmpeg
+```  
+
+## Install Tkinter
+```bash
+$ sudo apt install python3-tk
+```
+
+## Added to .bash_profile
+```bash
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+```  
+## Do git clone and reload .bash_profile  
+```bash
+# Download pyenv
+$ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+Cloning into '/home/user/.pyenv'...
+remote: Enumerating objects: 20109, done.
+remote: Counting objects: 100% (1021/1021), done.
+remote: Compressing objects: 100% (457/457), done.
+remote: Total 20109 (delta 627), reused 773 (delta 487), pack-reused 19088
+Receiving objects: 100% (20109/20109), 4.10 MiB | 1.89 MiB/s, done.
+Resolving deltas: 100% (13562/13562), done.
+
+# Reload .bash_profile
+$ source .bash_profile
+```  
+
 ## make directory
 ```
 $ mkdir ./venv3.7
@@ -44,6 +100,8 @@ Werkzeug==2.0.2
 zipp==3.6.0
 ```
 ## Check if dlib supports cuda
+If Dlib does not support cuda, the processing speed will be very slow.  
+You must have cuda tool kit, cuBLAS, cuDNN installed before installing Dlib.  
 ```bash
 $ python
 Python 3.7.11 (default, Nov  3 2021, 08:07:41) 

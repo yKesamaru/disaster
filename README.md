@@ -9,7 +9,7 @@ Disaster is most privacy-friendly.The face information is replaced with irrecove
 
 ![demo](./demo.gif)  
 ![screenshot](https://user-images.githubusercontent.com/93259837/139792630-06f66eef-2b41-4bbf-8c00-6c57ac811974.png)  
-![window](./img/Disaster_sample_window_d.png)  
+![create_face_data](./img/demo3.gif)  
 
 ## Project background
 It is an urgent task to find a solution to the situation where the safety of a loved one cannot be confirmed in the disaster. 

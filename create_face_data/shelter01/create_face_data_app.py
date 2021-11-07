@@ -13,7 +13,8 @@ import PySimpleGUI as sg
 # ------------
 
 input_movie = 'shelter01.mp4'
-SET_WIDTH = 600
+input_movie = 'somepeople.mp4'
+SET_WIDTH = 1000
 set_area = 'NONE'
 SET_FPS = 10
 FRAME_DROP = 1
@@ -88,7 +89,7 @@ layout = [
     [sg.Button('terminate', key='terminate', button_color='red')]
 ]
 
-window = sg.Window('Disaster sample window', layout)
+window = sg.Window('Disaster sample window', layout, location=(50,50))
 
 logo_image = cv2.imread("images/logo.png", cv2.IMREAD_UNCHANGED)
 rect01_image = cv2.imread("images/rect01.png", cv2.IMREAD_UNCHANGED)
@@ -122,18 +123,55 @@ while True:
     small_frame = set_resize(vcap, frame, SET_WIDTH, set_area)
     # small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB)
 
-    alpha = 0.3
-    overlay = small_frame.copy()
+    # alpha = 0.1
+    # overlay = small_frame.copy()
     orgHeight, orgWidth = logo_image.shape[:2]
-    ratio = SET_WIDTH / orgWidth / 4  # テロップ幅は横幅の半分に設定
+    ratio = SET_WIDTH / orgWidth / 4
     logo_image = cv2.resize(logo_image, None, fx=ratio, fy=ratio)
     x1, y1, x2, y2 = 0, 0, logo_image.shape[1], logo_image.shape[0]
     try:
-        small_frame[y1:y2, x1:x2] = small_frame[y1:y2, x1:x2] * \
+        small_frame[y1:y2, x1:x2] = \
+            small_frame[y1:y2, x1:x2] * \
             (1 - logo_image[:, :, 3:] / 255) + \
             logo_image[:, :, :3] * (logo_image[:, :, 3:] / 255)
     except:
         pass
+
+
+    face_location_list = face_recognition.face_locations(
+        small_frame, upsampling, mode)
+
+    face_encodings = face_recognition.face_encodings(
+        small_frame, face_location_list, jitters, model)
+
+    if len(face_encodings) > 0:
+        # for face_encoding in face_encodings:
+        for (top, right, bottom, left) in face_location_list:
+            # < BUG > -------------------------------------------------
+            face_width = right - left
+            face_height = bottom - top
+            # rect01_image = cv2.imread("images/rect01.png", cv2.IMREAD_UNCHANGED)
+            rect_orgHeight, rect_orgWidth = rect01_image.shape[:2]
+            width_ratio = 1.0 * (face_width / rect_orgWidth)
+            height_ratio = 1.0 * (face_height / rect_orgHeight)
+            resize_rect01_image = cv2.resize(rect01_image, None, fx=width_ratio, fy=height_ratio)
+            rect01_x1, rect01_y1, rect01_x2, rect01_y2 = left, top, left + resize_rect01_image.shape[1], top + resize_rect01_image.shape[0]
+            try:
+                small_frame[rect01_y1:rect01_y2, rect01_x1:rect01_x2] = \
+                    small_frame[rect01_y1:rect01_y2, rect01_x1:rect01_x2] * (1 - resize_rect01_image[:, :, 3:] / 255) + \
+                    resize_rect01_image[:, :, :3] * (resize_rect01_image[:, :, 3:] / 255)
+            except:
+                pass
+            # ---------------------------------------------------------
+    
+    # cv2.addWeighted(overlay, alpha, small_frame, 1-alpha, 0, small_frame)
+
+    try:
+        name_list.append(date_format())
+        face_encodings_list.append(face_encodings[0])
+    except:
+        pass
+
 
     event, _ = window.read(timeout=1)
 
@@ -141,39 +179,6 @@ while True:
     window["display"].update(data=imgbytes)
     if event == 'terminate':
         break
-
-    face_location_list = face_recognition.face_locations(
-        small_frame, upsampling, mode)
-
-    # < BUG > -------------------------------------------------
-    if len(face_location_list) > 0:
-        (top, right, bottom, left) = face_location_list[0]
-        face_width = right - left
-        face_height = bottom - top
-        rect_orgHeight, rect_orgWidth = rect01_image.shape[:2]
-        width_ratio = 1.0 * (face_width / rect_orgWidth)
-        height_ratio = 1.0 * (face_height / rect_orgHeight)
-        rect01_image = cv2.resize(
-            rect01_image, None, fx=width_ratio, fy=height_ratio)
-        rect01_x1, rect01_y1, rect01_x2, rect01_y2 = left, top, left + \
-            rect01_image.shape[1], top + rect01_image.shape[0]
-        try:
-            small_frame[rect01_y1:rect01_y2, rect01_x1:rect01_x2] = small_frame[rect01_y1:rect01_y2, rect01_x1:rect01_x2] * \
-                (1 - rect01_image[:, :, 3:] / 255) + \
-                rect01_image[:, :, :3] * (rect01_image[:, :, 3:] / 255)
-        except:
-            print('描画できない')
-            pass
-    # ---------------------------------------------------------
-
-    face_encodings = face_recognition.face_encodings(
-        small_frame, face_location_list, jitters, model)
-
-    try:
-        name_list.append(date_format())
-        face_encodings_list.append(face_encodings[0])
-    except:
-        pass
 
     # For updating npKnown.npz from time to time. --
     cnt = cnt+1

@@ -108,7 +108,8 @@ Disaster
 ```
 All the faces taken by the camera installed in the shelter are converted into numerical data.  
 
-The shelter01 and shelter02 directories were created to represent multiple shelters.
+The shelter01 and shelter02 directories were created to represent multiple shelters.  
+Click <a href="doc/How_to_operate.md">here</a> for a more detailed explanation.
 
 ### 3. Data synchronization between servers
 The face data file is shared between each server to prevent the entire system from going down.  

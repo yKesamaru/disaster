@@ -7,11 +7,12 @@ How can you find a loved one in the event of a disaster? Disaster allows you to 
 
 Disaster is most privacy-friendly.The face information is replaced with irrecoverable numerical data, and even the developer cannot restore the original face image.
 
-![demo](./demo.gif  )  
-![screenshot](https://user-images.githubusercontent.com/93259837/139792630-06f66eef-2b41-4bbf-8c00-6c57ac811974.png)
+![demo](./demo.gif)  
+![screenshot](https://user-images.githubusercontent.com/93259837/139792630-06f66eef-2b41-4bbf-8c00-6c57ac811974.png)  
+![create_face_data](./img/demo3.gif)  
 
 ## Project background
-It is an urgent task to find a solution to the situation where the safety of a loved one cannot be confirmed in the disaster. 
+It is an urgent task to find a solution to situation where safety of a loved one cannot be confirmed in a disaster. 
 Currently, various companies are working to solve problems bringing together feasible technologies. 
 
 However, pre-registration before the disaster is often required, and/or family discussions are a prerequisite in advance. 
@@ -66,10 +67,14 @@ $ flask run
 *** Access `http://127.0.0.1:5000/` ***
 
 ### When trying to create numerical face data
-Activate the Python virtual environment in advance.
+You can use network cameras and USB cameras in Disaster.  
+Here, an mp4 file is used for the sake of simplicity.  
+Optional: Activate the Python virtual environment in advance.
 ```bash
-$ cd create_face_data
+$ cd create_face_data/shelter01
 $ python create_face_data_app.py 
+$ cd ../
+$ python marge_npKnown.py
 ```
 
 ## Component
@@ -94,9 +99,11 @@ Disaster
     ├ npKnown_root.npz
     ├ shelter01
     │  ├ create_face_data_app.py
+    │  ├ shelter01.mp4    
     │  └ npKnown.npz
     └ shelter02
         ├ create_face_data_app.py
+        ├ shelter02.mp4    
         └ npKnown.npz
 ```
 All the faces taken by the camera installed in the shelter are converted into numerical data.  

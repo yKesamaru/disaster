@@ -12,19 +12,23 @@ import PySimpleGUI as sg
 # pprint.pprint(sys.path)
 # ------------
 
-input_movie = 'shelter01.mp4'
-input_movie = 'somepeople.mp4'
-SET_WIDTH = 1000
+# input_movie = 'shelter01.mp4'
+input_movie = 'shelter02.mp4'
+# input_movie = 'somepeople.mp4'
+SET_WIDTH = 700
 set_area = 'NONE'
 SET_FPS = 10
-FRAME_DROP = 1
+FRAME_DROP = 3
 upsampling = 0
 mode = 'cnn'
 jitters = 0
 model = 'small'
-shelter_name = 'tokyo 1st community disaster center'
-phone_number = '&#128241; <a href="tel:123-45-6789">123-45-6789</a>'
-location = '<iframe src="https://maps.google.co.jp/maps?output=embed&q=東京駅&z=16" width="70%" frameborder="0" scrolling="no" ></iframe>'
+# shelter_name = 'Tokyo 1st community disaster center'
+shelter_name = 'Osaka hospital'
+# phone_number = '&#128241; <a href="tel:123-45-6789">123-45-6789</a>'
+phone_number = '&#128241; <a href="tel:456-78-9123">123-45-6789</a>'
+# location = '<iframe src="https://maps.google.co.jp/maps?output=embed&q=東京駅&z=16" width="70%" frameborder="0" scrolling="no" ></iframe>'
+location = '<iframe src="https://maps.google.co.jp/maps?output=embed&q=大阪市&z=16" width="70%" frameborder="0" scrolling="no" ></iframe>'
 
 adress = shelter_name + '<br>' + phone_number + '<br>' + location
 

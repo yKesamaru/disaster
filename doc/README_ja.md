@@ -9,7 +9,8 @@ Disasterとは`dlib`を使った災害時安否確認用顔認証システムで
 Disasterはプライバシーに最も配慮しています。顔情報は復元不可能な数値データに置き換えられ、たとえ開発者であっても元の顔画像に復元できません。  
 
 ![demo](../demo.gif  )  
-![screenshot](https://user-images.githubusercontent.com/93259837/139792630-06f66eef-2b41-4bbf-8c00-6c57ac811974.png)  
+![screenshot](https://user-images.githubusercontent.com/93259837/139792630-06f66eef-2b41-4bbf-8c00-6c57ac811974.png) 
+![create_face_data](./img/demo3.gif)   
 
 ## 背景
 災害が発生した状況に於いて最愛の人の安否が確認できない、この状況の解決方法を模索することは喫緊の課題です。現在様々な企業が実現可能な技術を持ち寄り課題の解決に取り組んでいます。  
@@ -19,7 +20,7 @@ Disasterはプライバシーに最も配慮しています。顔情報は復元
 
 
 ## 特徴
-* シェルターに設置されているカメラの映像から元の顔画像に復元不可能な数値データに変換します  
+* シェルターに設置されているカメラの映像から元の顔画像に復元不可能な数値データに変換します。プライバシーを最重要視するため被災者の顔画像は保存されませんし表示もされません。  
 
 * 家族の写真をDisaster Webアプリケーションにアップロードすると、似ている人を自動的に探し、いつどのシェルターに被災者がいたかという情報を表示します  
 
@@ -29,6 +30,7 @@ Disasterはプライバシーに最も配慮しています。顔情報は復元
 * Unix-like OS
 * NVIDIA GeForce GTX 1660 Ti +
 * Python 3.7 +
+* ネットワークカメラやWebカメラ
 ```bash
 execution environment (Developer)
 Kernel	Linux 5.4.0-89-generic (x86_64)
@@ -65,8 +67,10 @@ $ flask run
 ### 顔データ作成を試すには
 前もってPython仮想環境を立ち上げて下さい。
 ```bash
-$ cd create_face_data
+$ cd create_face_data/shelter01
 $ python create_face_data_app.py 
+$ cd ../
+$ python marge_npKnown.py
 ```
 
 ## 構成
@@ -90,14 +94,17 @@ Disaster
     ├ npKnown_root.npz
     ├ shelter01
     │  ├ create_face_data_app.py
+    │  ├ shelter01.mp4    
     │  └ npKnown.npz
     └ shelter02
         ├ create_face_data_app.py
+        ├ shelter02.mp4    
         └ npKnown.npz
 ```
 シェルターに設置されたカメラで撮影された大勢の顔を全てデータ化します。  
 
-複数のシェルターを表現するためshelter01, shelter02ディレクトリを設けています。   
+複数のシェルターを表現するためshelter01, shelter02ディレクトリを設けています。  
+より詳しい説明は<a href="doc/How_to_operate.md">こちら</a>からご参照下さい。   
 
 ### 3. サーバ間データ同期
 顔データファイルを各サーバー間で共有し、システム全体のダウンを防止します。  

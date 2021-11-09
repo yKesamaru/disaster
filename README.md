@@ -23,7 +23,7 @@ If the situation when victim cannot be used smartphone, it is so difficult for f
 These situations are occurring all over the world not only natural disasters but also wars or civil wars.  
 
 ## Features
-  * Converts the image taken by a camera installed in the shelter into numerical data that cannot be restored to the original face image.  
+  * Converts the image taken by a camera installed in the shelter into numerical data that cannot be restored to the original face image. Since privacy is of the utmost importance, the victim's face image is not either saved or displayed.
 
 * When upload a family photo to the Disaster web application, it will automatically look for similar faces and display information about when and in which shelter the victim was.  
 
@@ -33,6 +33,7 @@ These situations are occurring all over the world not only natural disasters but
 * Unix-like OS
 * NVIDIA GeForce GTX 1660 Ti +
 * Python 3.7 +
+* Network camera or webcam
 ```bash
 execution environment (Developer)
 Kernel	Linux 5.4.0-89-generic (x86_64)

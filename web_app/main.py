@@ -168,7 +168,7 @@ def name_path(name):
 
     return render_template(
         'search_result.html',
-        name=name,
-        shelter_name=shelter_name,
-        date=date
+        name = name,
+        shelter_name = shelter_name,
+        date = date
     )

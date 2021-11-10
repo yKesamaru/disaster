@@ -34,6 +34,7 @@ These situations are occurring all over the world not only natural disasters but
 * NVIDIA GeForce GTX 1660 Ti +
 * Python 3.7 +
 * Network camera or webcam
+  * Not needed if you just want to try Disaster. In that case, use the attached mp4 file. 
 ```bash
 execution environment (Developer)
 Kernel	Linux 5.4.0-89-generic (x86_64)

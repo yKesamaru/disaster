@@ -1,4 +1,3 @@
-import shutil
 from datetime import datetime
 
 import cv2
@@ -12,23 +11,26 @@ import PySimpleGUI as sg
 # pprint.pprint(sys.path)
 # ------------
 
+# Initialize
 # input_movie = 'shelter01.mp4'
 input_movie = 'shelter02.mp4'
 # input_movie = 'somepeople.mp4'
 SET_WIDTH = 700
 set_area = 'NONE'
+# set_area = 'CENTER'
 SET_FPS = 10
 FRAME_DROP = 3
 upsampling = 0
 mode = 'cnn'
 jitters = 0
 model = 'small'
+
 # shelter_name = 'Tokyo 1st community disaster center'
-shelter_name = 'Osaka hospital'
 # phone_number = '&#128241; <a href="tel:123-45-6789">123-45-6789</a>'
-phone_number = '&#128241; <a href="tel:456-78-9123">123-45-6789</a>'
 # location = '<iframe src="https://maps.google.co.jp/maps?output=embed&q=東京駅&z=16" width="70%" frameborder="0" scrolling="no" ></iframe>'
-location = '<iframe src="https://maps.google.co.jp/maps?output=embed&q=大阪市&z=16" width="70%" frameborder="0" scrolling="no" ></iframe>'
+shelter_name = '<span>災害時一時避難場所 集会所</span>'
+phone_number = '<span>&#128241; <a href="tel:456-78-9123">456-78-9123</a></span>'
+location = '<span><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d829.0061131407692!2d135.5891932157148!3d34.680302291747765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000dfe5775f559f%3A0x61cad0228cb524ca!2z54G95a6z5pmC5LiA5pmC6YG_6Zuj5aC05omAIOmbhuS8muaJgA!5e1!3m2!1sja!2sjp!4v1636587304712!5m2!1sja!2sjp&z=16" width="70%" frameborder="0" scrolling="no" loading="lazy"></iframe></span>'
 
 adress = shelter_name + '<br>' + phone_number + '<br>' + location
 
@@ -36,8 +38,6 @@ adress = shelter_name + '<br>' + phone_number + '<br>' + location
 def set_resize(vcap, frame, SET_WIDTH, set_area):
     height = vcap.get(cv2.CAP_PROP_FRAME_HEIGHT)
     width = vcap.get(cv2.CAP_PROP_FRAME_WIDTH)
-    # height = int(height)
-    # width = int(width)
 
     SET_HEIGHT = int((SET_WIDTH * height) / width)
 
@@ -82,7 +82,7 @@ def date_format():
     hour = str(now.hour)
     minute = str(now.minute)
 
-    return adress + '_' + day + '/' + month + '/' + year + ', ' + hour + '.' + minute
+    return adress + '__' + day + '/' + month + '/' + year + ', ' + hour + '.' + minute
 
 
 sg.theme('Reddit')

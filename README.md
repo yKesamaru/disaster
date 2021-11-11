@@ -5,10 +5,13 @@ Disaster is a face search system for disasters using `dlib`, and what is written
 
 How can you find a loved one in the event of a disaster? Disaster allows you to search for the face of the person you are looking for from the video taken by the camera installed in the shelter.  
 
-Disaster is most privacy-friendly.The face information is replaced with irrecoverable numerical data, and even the developer cannot restore the original face image.
+Disaster is most privacy-friendly.The face information is replaced with irrecoverable numerical data, and even the developer cannot restore the original face image.  
 
+* Disaster web application
 ![demo](./demo.gif)  
 ![screenshot](https://user-images.githubusercontent.com/93259837/139792630-06f66eef-2b41-4bbf-8c00-6c57ac811974.png)  
+
+* The Disaster application window of creating 128D vector data from faces.
 ![create_face_data](./img/demo3.gif)  
 
 ## Project background
@@ -52,7 +55,7 @@ Python 3.7.11(pyenv)
 ```
 $ git clone https://github.com/yKesamaru/disaster.git
 ```
-Build python runtime environment and others described <a href="doc/Build_python_runtime_environment.md">here</a>.
+Build python runtime environment and others are described <a href="doc/Build_python_runtime_environment.md">here</a>.
 
 ### When trying the Disaster web application
 ```bash
@@ -117,6 +120,13 @@ Click <a href="doc/How_to_operate.md">here</a> for a more detailed explanation.
 The face data file is shared between each server to prevent the entire system from going down.  
 
 ## Project maintenance and contribution
-I hope that the activities will spread widely. It would be very helpful if someone could translate it into English. 
+Project is maintenanced by Yoshitsugu Kesamaru.  
+I hope that similar projects will spread widely.  
+
+My mother tongue is not English, so I'm not very good at English, so I would appreciate it if you could point out any description using incorrect English. 
 
 Thankyou
+
+## ToDo
+* Make it easier to build an environment using Docker.
+

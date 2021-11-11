@@ -1,17 +1,17 @@
 <div style="text-align: right"><a href="doc/README_ja.md">[ja]</a></div>  
 
 # Disaster
-Disaster is a face search system for disasters using `dlib`, and what is written in `python`.  
+Disaster is a face search system for disasters using `dlib`, `face_recognition`, `flask`, `PySimpleGUI` and others, and what is written in `python`.  
 
 How can you find a loved one in the event of a disaster? Disaster allows you to search for the face of the person you are looking for from the video taken by the camera installed in the shelter.  
 
 Disaster is most privacy-friendly.The face information is replaced with irrecoverable numerical data, and even the developer cannot restore the original face image.  
 
-* Disaster web application
-![demo](./demo.gif)  
+* Disaster web application demo  
+![demo](./img/demo.gif)  
 ![screenshot](https://user-images.githubusercontent.com/93259837/139792630-06f66eef-2b41-4bbf-8c00-6c57ac811974.png)  
 
-* The Disaster application window of creating 128D vector data from faces.
+* The Disaster application window demo of creating 128D vector data from faces.  
 ![create_face_data](./img/demo3.gif)  
 
 ## Project background

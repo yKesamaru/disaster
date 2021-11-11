@@ -1,17 +1,17 @@
 <div style="text-align: right"><a href="doc/README_ja.md">[ja]</a></div>  
 
 # Disaster
-Disaster is a face search system for disasters using `dlib`, and what is written in `python`.  
+Disaster is a face search system for disasters using `dlib`, `face_recognition`, `flask`, `PySimpleGUI` and others, and what is written in `python`.  
 
 How can you find a loved one in the event of a disaster? Disaster allows you to search for the face of the person you are looking for from the video taken by the camera installed in the shelter.  
 
 Disaster is most privacy-friendly.The face information is replaced with irrecoverable numerical data, and even the developer cannot restore the original face image.  
 
-* Disaster web application
-![demo](./demo.gif)  
+* Disaster web application demo  
+![demo](./img/demo.gif)  
 ![screenshot](https://user-images.githubusercontent.com/93259837/139792630-06f66eef-2b41-4bbf-8c00-6c57ac811974.png)  
 
-* The Disaster application window of creating 128D vector data from faces.
+* The Disaster application window demo of creating 128D vector data from faces.  
 ![create_face_data](./img/demo3.gif)  
 
 ## Project background
@@ -26,7 +26,7 @@ If the situation when victim cannot be used smartphone, it is so difficult for f
 These situations are occurring all over the world not only natural disasters but also wars or civil wars.  
 
 ## Features
-  * Converts the image taken by a camera installed in the shelter into numerical data that cannot be restored to the original face image. Since privacy is of the utmost importance, the victim's face image is not either saved or displayed.
+  * Converts the image taken by a camera installed in the shelter into numerical data that cannot be restored to the original face image. Since privacy is of the utmost importance, the victim's face image is not displayed and immediately is removed.
 
 * When upload a family photo to the Disaster web application, it will automatically look for similar faces and display information about when and in which shelter the victim was.  
 
@@ -120,7 +120,7 @@ Click <a href="doc/How_to_operate.md">here</a> for a more detailed explanation.
 The face data file is shared between each server to prevent the entire system from going down.  
 
 ## Project maintenance and contribution
-Project is maintenanced by Yoshitsugu Kesamaru.  
+Disaster is maintenanced by Yoshitsugu Kesamaru.  
 I hope that similar projects will spread widely.  
 
 My mother tongue is not English, so I'm not very good at English, so I would appreciate it if you could point out any description using incorrect English. 

@@ -12,7 +12,7 @@ Installing pyenv is not required, but it is recommended to avoid affecting your 
 
 ### Install dependencies
 ```bash
-$ sudo apt install -y gcc make build-essential libssl-dev libffi-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev liblzma-dev
+$ sudo apt install build-essential
 ```  
 ### Install codec
 ```bash
@@ -35,10 +35,6 @@ FFMPEG must be installed before installing opencv-python.
 $ sudo apt install ffmpeg
 ```  
 
-### Install Tkinter
-```bash
-$ sudo apt install python3-tk
-```
 ## Install pyenv
 ```bash
 # Download pyenv

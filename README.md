@@ -26,7 +26,7 @@ If the situation when victim cannot be used smartphone, it is so difficult for f
 These situations are occurring all over the world not only natural disasters but also wars or civil wars.  
 
 ## Features
-  * Converts the image taken by a camera installed in the shelter into numerical data that cannot be restored to the original face image. Since privacy is of the utmost importance, the victim's face image is not either saved or displayed.
+  * Converts the image taken by a camera installed in the shelter into numerical data that cannot be restored to the original face image. Since privacy is of the utmost importance, the victim's face image is not displayed and immediately is removed.
 
 * When upload a family photo to the Disaster web application, it will automatically look for similar faces and display information about when and in which shelter the victim was.  
 
@@ -120,7 +120,7 @@ Click <a href="doc/How_to_operate.md">here</a> for a more detailed explanation.
 The face data file is shared between each server to prevent the entire system from going down.  
 
 ## Project maintenance and contribution
-Project is maintenanced by Yoshitsugu Kesamaru.  
+Disaster is maintenanced by Yoshitsugu Kesamaru.  
 I hope that similar projects will spread widely.  
 
 My mother tongue is not English, so I'm not very good at English, so I would appreciate it if you could point out any description using incorrect English. 

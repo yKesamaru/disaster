@@ -52,7 +52,7 @@ Python 3.7.11(pyenv)
 ```
 $ git clone https://github.com/yKesamaru/disaster.git
 ```
-Build python runtime environment and others described <a href="doc/Build_python_runtime_environment.md">here</a>.
+Build python runtime environment and others are described <a href="doc/Build_python_runtime_environment.md">here</a>.
 
 ### When trying the Disaster web application
 ```bash
@@ -117,6 +117,13 @@ Click <a href="doc/How_to_operate.md">here</a> for a more detailed explanation.
 The face data file is shared between each server to prevent the entire system from going down.  
 
 ## Project maintenance and contribution
-I hope that the activities will spread widely. It would be very helpful if someone could translate it into English. 
+Project is maintenanced by Yoshitsugu Kesamaru.  
+I hope that similar projects will spread widely.  
+
+My mother tongue is not English, so I'm not very good at English, so I would appreciate it if you could point out any description using incorrect English. 
 
 Thankyou
+
+## ToDo
+* Make it easier to build an environment using Docker.
+

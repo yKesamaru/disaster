@@ -164,7 +164,7 @@ def name_path(name):
     if matches[best_match_index]:
         shelter_name = known_face_names_list[best_match_index]
         print('sheltername is ', shelter_name)
-        shelter_name, date = shelter_name.split('_', maxsplit=1)
+        shelter_name, date = shelter_name.split('__', maxsplit=1)
 
     return render_template(
         'search_result.html',

@@ -23,8 +23,6 @@ Please refer to <a href="https://docs.opencv.org/4.x/d2/de6/tutorial_py_setup_in
 ```bash
 sudo apt-get install libpng-dev
 sudo apt-get install libjpeg-dev
-sudo apt-get install libopenexr-dev
-sudo apt-get install libtiff-dev
 sudo apt-get install libwebp-dev
 ```  
 

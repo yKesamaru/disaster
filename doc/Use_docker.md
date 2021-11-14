@@ -22,7 +22,6 @@ $ docker build -t disaster .
 $ docker images
 REPOSITORY                            TAG              IMAGE ID       CREATED         SIZE
 disaster                              latest           8bb1b3c399ac   9 seconds ago   3.05GB
-sample                                0.1              6a4cc49c6a6d   11 hours ago    3.05GB
 ```
 ## Start Disaster
 ```bash

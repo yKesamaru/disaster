@@ -52,12 +52,14 @@ Python 3.7.11(pyenv)
 ```
   
 ## Usage  
-```
+### Use Docker
+If you use Docker, please refer to <a href="doc/Use_docker.md">here</a>.  
+
+### Other than using Docker
+Build python runtime environment and others are described <a href="doc/Build_python_runtime_environment.md">here</a>.  
+```bash
 $ git clone https://github.com/yKesamaru/disaster.git
 ```
-Build python runtime environment and others are described <a href="doc/Build_python_runtime_environment.md">here</a>.
-
-### When trying the Disaster web application
 ```bash
 $ cd web_app
 $ export FLASK_APP=main.py

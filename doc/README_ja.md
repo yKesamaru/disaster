@@ -49,12 +49,14 @@ Python 3.7.11(pyenv)
 ```
   
 ## 使用方法  
-```
+### Dockerを使う方法
+Dockerを使う場合は<a href="Build_python_runtime_environment.md">こちら</a>を参照して下さい。  
+
+### Dockerを使わない方法
+<a href="./Build_python_runtime_environment.md">こちら</a>を参照してPython実行環境等を構築して下さい。  
+```bash
 $ git clone https://github.com/yKesamaru/disaster.git
 ```
-<a href="./Build_python_runtime_environment.md">こちら</a>を参照してPython実行環境等を構築して下さい。
-
-### Disaster webアプリケーションを試すには
 ```bash
 $ cd web_app
 $ export FLASK_APP=main.py

@@ -135,5 +135,6 @@ My mother tongue is not English, so I'm not very good at English, so I would app
 Thankyou
 
 ## ToDo
-* Make it compatible with NVIDIA Docker.
+* Add loading animation at page transition.
+* Make compatible with NVIDIA Docker.
 

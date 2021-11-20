@@ -30,7 +30,7 @@ jitters = 0
 model = 'small'
 shelter_name = 'Tokyo 1st community disaster center'
 phone_number = '&#128241; <a href="tel:123-45-6789">123-45-6789</a>'
-location = '<iframe src="https://maps.google.co.jp/maps?output=embed&q=東京駅&z=16" width="70%" frameborder="0" scrolling="no" ></iframe>'
+location = '<span><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d829.0061131407692!2d135.5891932157148!3d34.680302291747765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000dfe5775f559f%3A0x61cad0228cb524ca!2z54G95a6z5pmC5LiA5pmC6YG_6Zuj5aC05omAIOmbhuS8muaJgA!5e1!3m2!1sja!2sjp!4v1636587304712!5m2!1sja!2sjp&z=16" width="70%" frameborder="0" scrolling="no" loading="lazy"></iframe></span>'
 ```
 ### input_movie
 Specify the input video source in the part of `input_movie`.  

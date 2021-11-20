@@ -35,7 +35,11 @@ These situations are occurring all over the world not only natural disasters but
 ## Requirements
 * Unix-like OS
 * NVIDIA GeForce GTX 1660 Ti +
+   * Not needed if you just want to try Disaster. In that case, processing speed is extremely slow. 
 * Python 3.7 +
+* git
+* Docker
+  * Only needed if you use Docker.
 * Network camera or webcam
   * Not needed if you just want to try Disaster. In that case, use the attached mp4 file. 
 ```bash
@@ -54,6 +58,7 @@ Python 3.7.11(pyenv)
 ## Usage  
 ### Use Docker
 If you use Docker, please refer to <a href="doc/Use_docker.md">here</a>.  
+The attached Dockerfile does not support cuda. Therefore, the operating speed is extremely slow. However, if you just want to try Disaster, I recommend using Docker. 
 
 ### Other than using Docker
 Build python runtime environment and others are described <a href="doc/Build_python_runtime_environment.md">here</a>.  

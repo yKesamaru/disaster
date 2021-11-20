@@ -29,8 +29,13 @@ $ git clone https://github.com/yKesamaru/disaster.git
 $ cd disaster
 ```
 ## Make image from dockerfile
+### If you use nvidia-docker2 package
 ```bash
 $ docker build -t disaster_gui:0.0.1 .
+```
+### If you do not use nvidia-docker2 package
+```bash
+$ docker build -t disaster:0.0.1 .
 ```
 ## Check the completed image
 ```bash
@@ -39,13 +44,26 @@ REPOSITORY                            TAG              IMAGE ID       CREATED   
 disaster_gui                          0.0.1            b6eafa258728   19 minutes ago   2.2GB
 ```
 ## Start Disaster
+### If you use nvidia-docker2 package
 Start Disaster as a GUI application.
 ```bash:Allow access to the X server from localhost.
 $ xhost +local:
 ```
 
+```bash:If you have nvidia-docker2 package installed
+$ docker run --gpus all --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: disaster_gui:0.0.1
+```
+
+First, a window for creating face vector data opens.  
+
+![](./img/creating_numerical_face_data_window-fs8.png)
+After the window closes, access <strong> http://172.17.0.2:5000/ </strong> with your browser.  
+![](./img/Disaster_web_application-fs8.png)
+
+### If you do not use nvidia-docker2 package
+Start Disaster.
 ```bash:If you don't have nvidia-docker2 package installed
-$ docker run --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: disaster_gui:0.0.1
+$ docker run --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: disaster:0.0.1
  * Serving Flask app 'main.py' (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
@@ -55,21 +73,10 @@ $ docker run --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: dis
    WARNING: This is a development server. Do not use it in a production deployment.
  * Running on http://172.17.0.2:5000/ (Press CTRL+C to quit)
 ```
-```bash:If you have nvidia-docker2 package installed
-$ docker run --gpus all --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: disaster_gui:0.0.1
-
-```
-
-First, a window for creating face vector data opens.  
-
-![](./img/creating_numerical_face_data_window-fs8.png)
-After the window closes, access <strong> http://172.17.0.2:5000/ </strong> with your browser.  
-![](./img/Disaster_web_application-fs8.png)
-
 ## When quitting Disaster
 Press `Cnt + c` to exit. Don't forget `xhost -local:`. 
 ```bash
-terms@terms-Desk:~/***/disaster$ docker run --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: disaster_gui:0.0.1
+***@***:~/***/disaster$ docker run --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: disaster_gui:0.0.1
  * Serving Flask app 'main.py' (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
@@ -79,7 +86,7 @@ terms@terms-Desk:~/***/disaster$ docker run --rm -it -e DISPLAY=$DISPLAY -v /tmp
    WARNING: This is a development server. Do not use it in a production deployment.
  * Running on http://172.17.0.2:5000/ (Press CTRL+C to quit)
 ^C
-terms@terms-Desk:~/***/disaster$ xhost -local:
+***@***:~/***/disaster$ xhost -local:
 non-network local connections being removed from access control list
 ```
 

@@ -2,9 +2,12 @@
 {% block content %}
 
 {% if shelter_name == "couldn't find that person" %}
-    <h1 class="title">Sorry, Not found</h1>
+<h1 class="title">Sorry, Not found</h1>
 {% else %}
-    <h1 class="title">We found!</h1>
+<h1 class="title">We found!</h1>
+<p>
+    Just similar person were found. This is not guarantee one's identity.
+</p>
 {% endif %}
 
 <div class="box">
@@ -16,17 +19,27 @@
 <div class="box">
     <p class="subtitle"><strong>Detailed information</strong></p>
     {% if shelter_name == "couldn't find that person" %}
-        <p>We couldn't find your loved one.</p>
-        <p>Check again a little later. </p>
+    <p>We couldn't find your loved one.</p>
+    <p>Check again a little later. </p>
     {% else %}
-        <p>&#128467; {{ date }}</p>
-        <!-- Disable html escaping -->
-        <p>{{ shelter_name | safe }}</p>
-        <!-- replace charactors -->
-        <!-- <i>{{ shelter_name | replace('_', ':') }}</i><br> -->
+    <p>&#128467; {{ date }}</p>
+    <!-- Disable html escaping -->
+    <p>{{ shelter_name | safe }}</p>
+    <!-- replace charactors -->
+    <!-- <i>{{ shelter_name | replace('_', ':') }}</i><br> -->
 
     {% endif %}
 </div>
+
+<ul class="has-text-left">
+    <li>
+        You can call this shelter by tapping the phone number.
+    </li>
+    <li>
+        You can display the google map of this shelter by tapping the map.
+    </li>
+</ul>
+
 <a href="{{ url_for('index') }}">
     <button class="button is-info">Home</button>
 </a>

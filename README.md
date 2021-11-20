@@ -58,7 +58,22 @@ Python 3.7.11(pyenv)
 ## Usage  
 ### Use Docker
 If you use Docker, please refer to <a href="doc/Use_docker.md">here</a>.  
-The attached Dockerfile does not support cuda. Therefore, the operating speed is extremely slow. However, if you just want to try Disaster, I recommend using Docker. 
+If you do not have the nvidia-docker2 package installed, the operating speed is extremely slow. However, if you just want to try Disaster, I think you can leave it as it is.  
+If you want to run Disaster at normal processing speed but do not have nvidia-docker2 package installed, please do the following.  
+```bash:Install nvidia-docker2 package
+# For Ubuntu 18.04
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID) && \
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - && \
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+sudo apt-get update
+sudo apt-get install -y nvidia-docker2
+sudo systemctl restart docker
+```
+For instructions on how to install the nvidia-docker2 package on each Linux distribution, see the official documentation installation guide.  
+https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installing-docker-ce  
+
+
 
 ### Other than using Docker
 Build python runtime environment and others are described <a href="doc/Build_python_runtime_environment.md">here</a>.  
@@ -78,7 +93,7 @@ $ flask run
 ```
 *** Access `http://127.0.0.1:5000/` ***
 
-### When trying to create numerical face data
+#### When trying to create numerical face data
 You can use network cameras and USB cameras in Disaster.  
 Here, an mp4 file is used for the sake of simplicity.  
 Optional: Activate the Python virtual environment in advance.

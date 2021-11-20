@@ -33,17 +33,18 @@ These situations are occurring all over the world not only natural disasters but
 * Local governments, organizations and others can freely use Disaster.  
 
 ## Requirements
-* Unix-like OS
+* Ubuntu or similar Linux distribution
 * NVIDIA GeForce GTX 1660 Ti +
-   * Not needed if you just want to try Disaster. In that case, processing speed is extremely slow. 
+   * Not needed if you just want to try Disaster. In that case, processing speed is extremely slow.  
+   * If you want to use GPU, you need to install the driver etc. by the method shown [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installing-docker-ce).
 * Python 3.7 +
 * git
-* Docker
+* Docker 19.03 +
   * Only needed if you use Docker.
 * Network camera or webcam
   * Not needed if you just want to try Disaster. In that case, use the attached mp4 file. 
 ```bash
-execution environment (Developer)
+Execution environment example (My development environment)
 Kernel	Linux 5.4.0-89-generic (x86_64)
 Version	#100~18.04.1-Ubuntu SMP Wed Sep 29 10:59:42 UTC 2021
 C Library	GNU C Library / (Ubuntu GLIBC 2.27-3ubuntu1.4) 2.27
@@ -140,16 +141,16 @@ Click <a href="doc/How_to_operate.md">here</a> for a more detailed explanation.
 
 ### 3. Data synchronization between servers
 The face data file is shared between each server to prevent the entire system from going down.  
+This feature has not been created yet.
 
 ## Project maintenance and contribution
 Disaster is maintenanced by Yoshitsugu Kesamaru.  
 I hope that similar projects will spread widely.  
 
-My mother tongue is not English, so I'm not very good at English, so I would appreciate it if you could point out any description using incorrect English. 
+My mother tongue is not English, so I'm not very good at it, so I would appreciate it if you could point out any description using incorrect English. 
 
 Thankyou
 
-## ToDo
-* Add loading animation at page transition.
-* Make compatible with NVIDIA Docker.
+<!-- ## ToDo
+*  -->
 

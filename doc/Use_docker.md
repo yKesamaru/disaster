@@ -47,8 +47,8 @@ First, a window for creating face vector data opens.
 After the window closes, access <strong> http://172.17.0.2:5000/ </strong> with your browser.  
 ![](./img/Disaster_web_application-fs8.png)
 
-## Disasterを終了する場合
-`Cnt + c`を押して終了します。`xhost`を元に戻すことを忘れないようにします。
+## When quitting Disaster
+Press `Cnt + c` to exit. Don't forget `xhost -local:`. 
 ```bash
 terms@terms-Desk:~/***/disaster$ docker run --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: disaster_gui:0.0.1
  * Serving Flask app 'main.py' (lazy loading)

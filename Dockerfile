@@ -26,7 +26,6 @@ RUN apt-get install -y --fix-missing \
     python3-numpy \
     software-properties-common \
     zip \
-    # python3-opencv \
     ffmpeg \
     libpng-dev \
     libopenexr-dev \
@@ -40,7 +39,6 @@ RUN apt-get install -y --fix-missing \
 # Install dlib
 RUN cd ~ && \
     mkdir -p dlib && \
-    # git clone -b 'v19.22' --single-branch https://github.com/davisking/dlib.git dlib/ && \
     git clone https://github.com/davisking/dlib.git dlib/ && \
     cd  dlib/ && \
     python3 setup.py install

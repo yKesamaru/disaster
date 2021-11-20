@@ -135,5 +135,5 @@ My mother tongue is not English, so I'm not very good at English, so I would app
 Thankyou
 
 ## ToDo
-* Make it easier to build an environment using Docker.
+* Make it compatible with NVIDIA Docker.
 

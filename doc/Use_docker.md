@@ -1,5 +1,19 @@
 # How to use Docker
-The attached Dockerfile does not support cuda. Therefore, the operating speed is extremely slow. However, if you just want to try Disaster, I recommend using Docker. 
+If you do not have the nvidia-docker2 package installed, the operating speed is extremely slow. However, if you just want to try Disaster, I think you can leave it as it is.  
+If you want to run Disaster at normal processing speed but do not have nvidia-docker2 package installed, please do the following.  
+```bash:Install nvidia-docker2 package
+# For Ubuntu 18.04
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID) && \
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - && \
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+sudo apt update
+sudo apt install -y nvidia-docker2
+sudo systemctl restart docker
+```
+For instructions on how to install the nvidia-docker2 package on each Linux distribution, see the official documentation installation guide.  
+https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installing-docker-ce  
+
 ## Make sure you have git and Docker installed.
 ```bash:
 $ which git
@@ -16,7 +30,7 @@ $ cd disaster
 ```
 ## Make image from dockerfile
 ```bash
-$ dockebuild -t disaster_gui:0.0.1 .
+$ docker build -t disaster_gui:0.0.1 .
 ```
 ## Check the completed image
 ```bash
@@ -30,8 +44,8 @@ Start Disaster as a GUI application.
 $ xhost +local:
 ```
 
-```bash
-$ docker run --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: disaster:0.0.1
+```bash:If you don't have nvidia-docker2 package installed
+$ docker run --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: disaster_gui:0.0.1
  * Serving Flask app 'main.py' (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
@@ -41,6 +55,11 @@ $ docker run --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: dis
    WARNING: This is a development server. Do not use it in a production deployment.
  * Running on http://172.17.0.2:5000/ (Press CTRL+C to quit)
 ```
+```bash:If you have nvidia-docker2 package installed
+$ docker run --gpus all --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: disaster_gui:0.0.1
+
+```
+
 First, a window for creating face vector data opens.  
 
 ![](./img/creating_numerical_face_data_window-fs8.png)

@@ -1,7 +1,7 @@
 <div style="text-align: right"><a href="doc/README_ja.md">[ja]</a></div>  
 
 # Disaster
-Disaster is a face search system for disasters using `dlib`, `face_recognition`, `flask`, `PySimpleGUI` and others, and what is written in `python`.  
+Disaster is a face search system for disasters using `dlib`, `face_recognition`, `flask`, `PySimpleGUI` and others, and what is written in `Python`.  
 
 How can you find a loved one in the event of a disaster? Disaster allows you to search for the face of the person you are looking for from the video taken by the camera installed in the shelter.  
 
@@ -18,9 +18,8 @@ Disaster is most privacy-friendly.The face information is replaced with irrecove
 It is an urgent task to find a solution to situation where safety of a loved one cannot be confirmed in a disaster. 
 Currently, various companies are working to solve problems bringing together feasible technologies. 
 
-However, pre-registration before the disaster is often required, and/or family discussions are a prerequisite in advance. 
+However, pre-registration before the disaster is often required, and/or family discussions are a prerequisite in advance. So it is expected that it will be difficult to confirm the safety of family after the disaster if some measures are not taken before the disaster.  
 
-So it is expected that it will be difficult to confirm the safety of family after the disaster if some measures are not taken before the disaster. 
 If the situation when victim cannot be used smartphone, it is so difficult for family to try to contact victim immediately after the disaster. 
 
 These situations are occurring all over the world not only natural disasters but also wars or civil wars.  

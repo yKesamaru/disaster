@@ -17,8 +17,11 @@ Disasterはプライバシーに最も配慮しています。顔情報は復元
 
 ## 背景
 災害が発生した状況に於いて最愛の人の安否が確認できない、この状況の解決方法を模索することは喫緊の課題です。現在様々な企業が実現可能な技術を持ち寄り課題の解決に取り組んでいます。  
+
 しかしながら災害前の事前登録が必要であったり、前もって家族の話し合いが前提であったりするため、災害前に何らかの対策をしていない場合災害直後に家族の安否を確認する事は困難であると予想されます。  
+
 もし被災者のスマートフォンが使用できない状況の場合、災害直後に被災者から家族へ連絡を試みることは困難です。  
+
 こうした状況は自然災害だけではなく戦争や内戦によって、世界中で発生しています。
 
 
@@ -30,13 +33,17 @@ Disasterはプライバシーに最も配慮しています。顔情報は復元
 * 自治体や組織は自由にシステムを利用する事が可能です  
 
 ## システム要件
-* Unix-like OS
+* Ubuntuか類似したLinuxディストリビューション
 * NVIDIA GeForce GTX 1660 Ti +
+  * Disasterを試すだけの場合は必要ありません。その場合は処理速度がかなり遅くなります。
+  * もしGPUを使用したい場合、ドライバなどのインストールは[こちら](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installing-docker-ce)に紹介されている方法でインストールして下さい。
 * Python 3.7 +
+* git
+* Docker 19.03 +
 * ネットワークカメラやWebカメラ
   * Disasterを試すだけなら必要ありません。その様な場合に備えてmp4ファイルが添付されています。
 ```bash
-execution environment (Developer)
+実行環境例 (私の開発環境)
 Kernel	Linux 5.4.0-89-generic (x86_64)
 Version	#100~18.04.1-Ubuntu SMP Wed Sep 29 10:59:42 UTC 2021
 C Library	GNU C Library / (Ubuntu GLIBC 2.27-3ubuntu1.4) 2.27
@@ -51,6 +58,21 @@ Python 3.7.11(pyenv)
 ## 使用方法  
 ### Dockerを使う方法
 Dockerを使う場合は<a href="Build_python_runtime_environment.md">こちら</a>を参照して下さい。  
+もしnvidia-docker2パッケージをインストールしていない場合、実行速度はかなり遅くなります。しかしながら、もしDisasterを試す場合だけだった場合はそのままで良いと思います。  
+もしDsasterを標準的な処理速度で動かしたい場合でnvidia-docker2パッケージをインストールしていない場合、以下を参照して下さい。
+```bash:Install nvidia-docker2 package
+# For Ubuntu 18.04
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID) && \
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - && \
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+sudo apt-get update
+sudo apt-get install -y nvidia-docker2
+sudo systemctl restart docker
+```
+各ディストリビューションにおけるインストールの方法は、公式ドキュメントをご参照下さい。  
+https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installing-docker-ce  
+
 
 ### Dockerを使わない方法
 <a href="./Build_python_runtime_environment.md">こちら</a>を参照してPython実行環境等を構築して下さい。  
@@ -71,7 +93,9 @@ $ flask run
 *** `http://127.0.0.1:5000/`にアクセスして下さい ***
 
 ### 顔データ作成を試すには
-前もってPython仮想環境を立ち上げて下さい。
+DisasterではネットワークカメラやWebカメラを使用することが出来ます。  
+ここでは簡単な例としてmp4ファイルを使います。  
+オプション：前もってPython仮想環境を立ち上げて下さい。
 ```bash
 $ cd create_face_data/shelter01
 $ python create_face_data_app.py 
@@ -114,11 +138,14 @@ Disaster
 
 ### 3. サーバ間データ同期
 顔データファイルを各サーバー間で共有し、システム全体のダウンを防止します。  
+この機能はまだ実装されていません。
 
 ## プロジェクトの維持・貢献
-同様の活動が広く広がることを期待します。
-英語が得意ではありませんので英語の誤りがありましたら指摘して頂けると大変ありがたいです。
+Disasterのメンテナンスは袈裟丸喜嗣が行っています。  
+同様の活動が広く広がることを期待します。  
+英語が得意ではありませんので英語の誤りがありましたら指摘して頂けると大変ありがたいです。  
+  
 ありがとうございました。
 
-## ToDo
-* Dockerによる環境構築の用意
+<!-- ## ToDo
+*  -->

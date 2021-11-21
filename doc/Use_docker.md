@@ -74,7 +74,8 @@ $ docker run --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: dis
  * Running on http://172.17.0.2:5000/ (Press CTRL+C to quit)
 ```
 ## When quitting Disaster
-Press `Cnt + c` to exit. Don't forget `xhost -local:`. 
+Press `Cnt + c` to exit.  
+Don't forget `xhost -local:`. 
 ```bash
 ***@***:~/***/disaster$ docker run --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: disaster_gui:0.0.1
  * Serving Flask app 'main.py' (lazy loading)

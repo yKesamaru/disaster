@@ -59,7 +59,7 @@ Python 3.7.11(pyenv)
 ### Dockerを使う方法
 Dockerを使う場合は<a href="Build_python_runtime_environment.md">こちら</a>を参照して下さい。  
 もしnvidia-docker2パッケージをインストールしていない場合、実行速度はかなり遅くなります。しかしながら、もしDisasterを試す場合だけだった場合はそのままで良いと思います。  
-もしDsasterを標準的な処理速度で動かしたい場合でnvidia-docker2パッケージをインストールしていない場合、以下を参照して下さい。
+もしDisasterを標準的な処理速度で動かしたい場合でnvidia-docker2パッケージをインストールしていない場合、以下を参照して下さい。
 ```bash:Install nvidia-docker2 package
 # For Ubuntu 18.04
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID) && \

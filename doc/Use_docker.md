@@ -62,6 +62,9 @@ After the window closes, access <strong> http://172.17.0.2:5000/ </strong> with 
 
 ### If you do not use nvidia-docker2 package
 Start Disaster.
+```bash:Allow access to the X server from localhost.
+$ xhost +local:
+```
 ```bash:If you don't have nvidia-docker2 package installed
 $ docker run --rm -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix: disaster:0.0.1
  * Serving Flask app 'main.py' (lazy loading)

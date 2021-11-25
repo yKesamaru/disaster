@@ -59,6 +59,8 @@ Python 3.7.11(pyenv)
 ### Use Docker
 If you use Docker, please refer to <a href="doc/Use_docker.md">here</a>.  
 If you do not have the nvidia-docker2 package installed, the operating speed is extremely slow. However, if you just want to try Disaster, I think you can leave it as it is.  
+In that case, please use "Dockerfile".  
+  
 If you want to run Disaster at normal processing speed but do not have nvidia-docker2 package installed, please do the following.  
 ```bash:Install nvidia-docker2 package
 # For Ubuntu 18.04
@@ -72,6 +74,8 @@ sudo systemctl restart docker
 ```
 For instructions on how to install the nvidia-docker2 package on each Linux distribution, see the official documentation installation guide.  
 https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installing-docker-ce  
+  
+Also, use "Dockerfile_GPU" for the Dockerfile. In that case, change the file name from Dockerfile_GPU to Dockerfile.
 
 
 

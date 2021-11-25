@@ -1,17 +1,11 @@
-FROM nvidia/cuda:11.4.2-cudnn8-devel-ubuntu18.04
-# FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
-# FROM nvidia/cuda:9.0-cudnn7-devel
+FROM ubuntu:18.04
 LABEL maintainer="yKesamaru <y.kesamaru@tokai-kaoninsho.com>"
 
-# ENV TZ=Asia/Tokyo
-# RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Tokyo
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-ENV NVIDIA_VISIBLE_DEVICES all
-ENV NVIDIA_DRIVER_CAPABILITIES utility,compute
-
-RUN apt -y update
-RUN apt install -y --fix-missing \
+RUN apt-get -y update
+RUN apt-get install -y --fix-missing \
     build-essential \
     cmake \
     gfortran \
@@ -40,60 +34,31 @@ RUN apt install -y --fix-missing \
     python3-pip \
     python-pip-whl \
     python3-tk \
-    libsm6 \
-    libxext6 \
-    libxrender-dev \
-    # ubuntu-desktop \
-    xserver-xorg \
-    && apt clean && rm -rf /tmp/* /var/tmp/*
-
-RUN pip3 install -U pip
+    && apt-get clean && rm -rf /tmp/* /var/tmp/*
 
 # Install dlib
-RUN git clone https://github.com/davisking/dlib.git
-# RUN git clone -b 'v19.16' --single-branch https://github.com/davisking/dlib.git
-WORKDIR /dlib
-RUN mkdir ./build
-RUN cmake -H/dlib -B/dlib/build -DDLIB_USE_CUDA=1 -DUSE_AVX_INSTRUCTIONS=1
-RUN cmake --build /dlib/build
-RUN python3 setup.py install
-
-# Download shape_predictor_5_face_landmarks.dat.bz2 for the Dlib python example.
-WORKDIR /dlib/python_examples
-RUN wget http://dlib.net/files/shape_predictor_5_face_landmarks.dat.bz2
-RUN bunzip2 shape_predictor_5_face_landmarks.dat.bz2
-# For example: python3 face_jitter.py shape_predictor_5_face_landmarks.dat
-# others: sudo apt -y install x11-apps; xeyes
-
-# set local
-# RUN locale-gen en_US.UTF-8
-# ENV LANG en_US.UTF-8  
-# ENV LANGUAGE en_US:en  
-# ENV LC_ALL en_US.UTF-8
-# RUN export LC_ALL=C.UTF-8 && \
-#     export LANG=C.UTF-8
+RUN cd ~ && \
+    mkdir -p dlib && \
+    git clone https://github.com/davisking/dlib.git dlib/ && \
+    cd  dlib/ && \
+    python3 setup.py install
 
 # Install Disaster
 RUN mkdir /root/disaster/
 
 COPY . /root/disaster
-WORKDIR /root/disaster
-# RUN pip3 install -r requirements.txt
-RUN python3 -m pip install -r requirements.txt
-# RUN pip3 install face-recognition
-# RUN pip3 install face-recognition-models
-# RUN pip3 install opencv-python
-# RUN pip3 install Pillow
-# RUN pip3 install flask
-# RUN pip3 install jinja2
-# RUN pip3 install PySimpleGUI
+
+RUN cd  /root/disaster/ && \
+    pip3 install -U pip && \
+    pip3 install -r requirements.txt
 
 CMD export LC_ALL=C.UTF-8 && \
     export LANG=C.UTF-8 && \
-    # cd /root/disaster/create_face_data/shelter01/ && \
-    # python3 ./create_face_data_app.py && \
+    cd /root/disaster/create_face_data/shelter01/ && \
+    python3 ./create_face_data_app.py && \
     cd /root/disaster/web_app/ && \
     export FLASK_APP=main.py && \
+    # flask run --host=0.0.0.0 && \
     flask run --host=0.0.0.0
 
 

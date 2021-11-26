@@ -68,6 +68,11 @@ def goto_upload_page():
         'upload_page.html'
     )
 
+@app.route('/more_details')
+def more_details():
+    return render_template(
+        'more_details.html'
+    )
 
 @app.route('/terms_n_conditions')
 def terms_n_conditions():

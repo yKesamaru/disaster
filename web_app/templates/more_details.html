@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">What is "Disaster"</h1>
+<img src="/static/images/flooding-minot-n-d-june-24-2011-red-cross-shelter-in-an-auditorium-that-is-c80be8-1024.jpg"
+        width="200px" style="border-radius: 5px;" alt="">
+<h2>Project background</h2>
+<div class="has-text-left">
+    <p>It is an urgent task to find a solution to situation where safety of a loved one cannot be confirmed in a disaster. Currently, various companies are working to solve problems bringing together feasible technologies.</p>
+    <p>However, pre-registration before the disaster is often required, and/or family discussions are a prerequisite in advance. So it is expected that it will be difficult to confirm the safety of family after the disaster if some measures are not taken before the disaster.</p>
+    <p>If the situation when victim cannot be used smartphone, it is so difficult for family to try to contact victim immediately after the disaster.</p>
+    <p>These situations are occurring all over the world not only natural disasters but also wars or civil wars.</p>
+</div>
+<h2>Features</h2>
+<div class="has-text-left">
+    <ul>
+        <li>Converts the image taken by a camera installed in the shelter into numerical data that cannot be restored to the original face image. Since privacy is of the utmost importance, the victim's face image is not displayed and immediately is removed.</li>
+        <li>When upload a family photo to the Disaster web application, it will automatically look for similar faces and display information about when and in which shelter the victim was.</li>
+        <li>Local governments, organizations and others can freely use Disaster.</li>
+    </ul>
+</div>
+<a href="{{ url_for('index') }}">
+    <button class="button is-info">Back</button>
+</a>
+{% endblock %}

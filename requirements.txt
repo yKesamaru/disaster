@@ -4,6 +4,8 @@ face-recognition-models
 numpy
 opencv-python
 Pillow
-flask
+Flask
+Werkzeug
 jinja2
 PySimpleGUI
+gunicorn

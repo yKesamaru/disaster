@@ -5,21 +5,21 @@
     Upload a photo that clearly shows the face of the person you are looking for. <br />
     You can select it by pressing the "Choose a photo" button.
 </p>
-<!-- <form method="post" enctype="multipart/form-data" action="uploads"> -->
+<form method="post" enctype="multipart/form-data" action="uploads">
 
-    <!-- <label class="button is-info">
+    <label class="button is-info">
         Choose a photo
         <input type="file" id="selected_file" name="img_file" style="display: none;" accept="image/*">
-    </label> -->
+    </label>
 
     <!-- For demonstration site built on heroku -->
-    <a href="{{ url_for('heroku_photos') }}">
+    <!-- <a href="{{ url_for('heroku_photos') }}">
         <button class="button is-info">Choose a photo</button>
-    </a>
+    </a> -->
     <!-- end -->
 
-    <!-- <input id="upload" class="button is-primary" type="submit" value="upload" disabled> -->
-<!-- </form> -->
+    <input id="upload" class="button is-primary" type="submit" value="upload" disabled>
+</form>
 <img id="file-preview" style="width: 70%; margin: 1em; border-radius: 1em;">
 
 <script>

@@ -47,4 +47,4 @@ np.savez(
     extend_known_face_encodings_list
 )
 
-shutil.copy2("npKnown_root.npz", "../web_app/npKnown.npz")
+shutil.copy2("npKnown_root.npz", "../npKnown.npz")

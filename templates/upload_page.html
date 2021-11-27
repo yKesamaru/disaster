@@ -3,19 +3,27 @@
 <h1 class="title">Choose a photo that clearly shows the face</h1>
 <p class="has-text-left">
     Upload a photo that clearly shows the face of the person you are looking for. <br />
-    You can select it by pressing the "Choose a photo" button. 
+    You can select it by pressing the "Choose a photo" button.
 </p>
-<form method="post" enctype="multipart/form-data" action="uploads">
-    <label class="button is-info">
+<!-- <form method="post" enctype="multipart/form-data" action="uploads"> -->
+
+    <!-- <label class="button is-info">
         Choose a photo
         <input type="file" id="selected_file" name="img_file" style="display: none;" accept="image/*">
-    </label>
-    <input id="upload" class="button is-primary" type="submit" value="upload" disabled>
-</form>
+    </label> -->
+
+    <!-- For demonstration site built on heroku -->
+    <a href="{{ url_for('heroku_photos') }}">
+        <button class="button is-info">Choose a photo</button>
+    </a>
+    <!-- end -->
+
+    <!-- <input id="upload" class="button is-primary" type="submit" value="upload" disabled> -->
+<!-- </form> -->
 <img id="file-preview" style="width: 70%; margin: 1em; border-radius: 1em;">
 
 <script>
-    document.getElementById('selected_file').addEventListener('change', function(e) {
+    document.getElementById('selected_file').addEventListener('change', function (e) {
         var file = e.target.files[0];
         var blobUrl = window.URL.createObjectURL(file);
         var img = document.getElementById('file-preview');
@@ -23,7 +31,7 @@
         document.getElementById("upload").disabled = false;
     });
 
-    document.getElementById("upload").addEventListener("click", function(e) {
+    document.getElementById("upload").addEventListener("click", function (e) {
         //Loading image (display)
         document.getElementById('loading').classList.remove('hidden');
     });

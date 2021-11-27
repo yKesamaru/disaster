@@ -18,8 +18,9 @@ app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # limit upload file size : 16MB
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-# app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
+# app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+# However, when demonstrating on heroku, the memory allocation is very small, so limit it to less than 300KB.
+app.config['MAX_CONTENT_LENGTH'] = 300 * 1024
 
 npKnown = np.load('npKnown.npz', allow_pickle=True)
 A, B = npKnown.files
@@ -54,13 +55,17 @@ def index():
         'index.html'
     )
 
-
 @app.route('/too_large_file')
 def too_large_file():
     return render_template(
         'too_large_file.html'
     )
 
+@app.route('/heroku_photos')
+def heroku_photos():
+    return render_template(
+        'heroku_photos.html'
+    )
 
 @app.route('/upload_page')
 def goto_upload_page():

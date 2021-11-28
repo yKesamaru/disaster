@@ -50,6 +50,8 @@ def index():
     # remove /static/faces/*
     shutil.rmtree('static/faces/')
     os.mkdir('static/faces/')
+    f = open('static/faces/tmp.txt', 'w')
+    f.close()
     # ----------------
     return render_template(
         'index.html'

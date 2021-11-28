@@ -10,8 +10,7 @@
     Although it depends on the server specs, the file size of uploaded photos is usually 16MB in production operation.
 </p>
 <p class="has-text-left">
-    So either re-upload a photo with a big face (80x80px or larger) and a size less than 300KB, or tap the photo below
-    to download and then upload it.
+    So either re-upload a photo with a big face (80x80px or larger) and a size less than 300KB.
 </p>
 <p>
     <a href="{{ url_for('goto_upload_page') }}">
@@ -20,7 +19,14 @@
 </p>
 <p>Or</p>
 <p>Tap the photo below to download photos what are appropriate file size.<br /></p>
-</p>
+<div class="has-text-left">
+    Some of these pictures
+    <div style="padding-left: 2em">
+        <li>Photos whose facial area are too small to process</li>
+        <li>Photos of persons who are not supposed to be in the shelter</li>
+    </div>
+    are included.
+</div>
 <a href="static/photos/01.png" download onclick="location.href='{{ url_for('goto_upload_page') }}'"><img id="upload" style="border-radius: 10px" width="80" src="static/photos/01.png"></a>
 <a href="static/photos/02.png" download onclick="location.href='{{ url_for('goto_upload_page') }}'"><img id="upload" style="border-radius: 10px" width="80" src="static/photos/02.png"></a>
 <a href="static/photos/03.png" download onclick="location.href='{{ url_for('goto_upload_page') }}'"><img id="upload" style="border-radius: 10px" width="80" src="static/photos/03.png"></a>

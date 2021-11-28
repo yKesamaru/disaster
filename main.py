@@ -20,7 +20,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # limit upload file size : 16MB
 # app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 # However, when demonstrating on heroku, the memory allocation is very small, so limit it to less than 300KB.
-app.config['MAX_CONTENT_LENGTH'] = 300 * 1024
+app.config['MAX_CONTENT_LENGTH'] = 500 * 1024
 
 npKnown = np.load('npKnown.npz', allow_pickle=True)
 A, B = npKnown.files

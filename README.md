@@ -14,6 +14,12 @@ Disaster is most privacy-friendly.The face information is replaced with irrecove
 * The Disaster application window demo of creating 128D vector data from faces.  
 ![create_face_data](./img/demo3.gif)  
 
+## Visit demonstration page on HEROKU !
+You can experience the Disaster web application.
+https://disaster-application.herokuapp.com/
+
+***Since I am using heroku's free plan, it takes about 30 seconds to start the web application.***
+
 ## Project background
 It is an urgent task to find a solution to situation where safety of a loved one cannot be confirmed in a disaster. 
 Currently, various companies are working to solve problems bringing together feasible technologies. 
@@ -114,10 +120,9 @@ This system consists of three blocks.
 ![web_application](https://user-images.githubusercontent.com/93259837/139513838-3e22fb8e-f9b7-4c88-aa7c-2ec4aa72cdd4.png)  
 ```bash
 Disaster
-└ web_app
-    ├ main.py
-    ├ npKnown.npz
-    └ others
+  ├ main.py
+  ├ npKnown.npz
+  └ others
 ```
 People who want to find a family upload a family photo. It converts to non-recoverable numerical data on the server and searches for similar faces in the footage taken by the shelter's camera. Date, time and the shelter's name are displayed on the smartphone.  
 

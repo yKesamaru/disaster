@@ -1,5 +1,6 @@
 <div style="text-align: right"><a href="https://github.com/yKesamaru/disaster#disaster">[en]</a></div>  
 
+***最新のドキュメントは<a href="https://github.com/yKesamaru/disaster#disaster">英語版</a>になります。ご注意下さい。***
 
 # Disaster（ディザスター）
 Disasterとは`dlib`, `face_recognition`, `flask`, `PySimpleGUI`他を使った災害時安否確認用顔認証システムであり`Python`言語で書かれています。
@@ -14,6 +15,12 @@ Disasterはプライバシーに最も配慮しています。顔情報は復元
 
 * 様々な顔から128Dベクトルデータを作成するDisasterアプリケーションウィンドウ  
 ![create_face_data](../img/demo3.gif)   
+
+## Disaster Webアプリケーションを体験できます
+DisasterをHEROKU上に構築しました。
+https://disaster-application.herokuapp.com/
+  
+***無料プランを使用しているためインスタンスの起動に30秒ほどかかります。***
 
 ## 背景
 災害が発生した状況に於いて最愛の人の安否が確認できない、この状況の解決方法を模索することは喫緊の課題です。現在様々な企業が実現可能な技術を持ち寄り課題の解決に取り組んでいます。  

@@ -15,7 +15,7 @@ import PySimpleGUI as sg
 # input_movie = 'shelter01.mp4'
 input_movie = 'shelter02.mp4'
 # input_movie = 'somepeople.mp4'
-SET_WIDTH = 700
+SET_WIDTH = 1000
 set_area = 'NONE'
 SET_FPS = 10
 FRAME_DROP = 3

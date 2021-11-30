@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+        <div class="box">
+                <h1 class="title">Select and download a picture</h1>
+                <p>
+                        Since this Disaster demonstration site is built on HEROKU free plan, it is subject to very low memory limits.
+                        uploadされた写真はアスペクト比を保ったまま縦1,000px、横1,000px以内になるようにリサイズされます。
+                </p>
+                <figure >
+                        {% for face_file_name in face_file_name_list %}
+                        <a href="{{ face_file_name }}.html">
+                                <img 
+                                class="has-ratio" 
+                                width="80" 
+                                style="border-radius: 20px" 
+                                src="{{ face_file_name }}"
+                                >
+                        </a>
+                        {% endfor %}
+                </figure>
+        </div>
+{% endblock %}

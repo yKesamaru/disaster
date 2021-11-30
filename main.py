@@ -17,6 +17,7 @@ app = Flask(__name__)
 
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 # limit upload file size : 16MB
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
@@ -49,6 +50,16 @@ def handle_over_max_file_size(error):
         'too_large_file.html'
     )
 
+from werkzeug.exceptions import HTTPException
+
+@app.errorhandler(Exception)
+def handle_exception(e):
+    # pass through HTTP errors
+    if isinstance(e, HTTPException):
+        return e
+
+    # now you're handling non-HTTP exceptions only
+    return render_template("500_generic.html", e=e), 500
 
 @app.route('/')
 def index():
@@ -62,6 +73,11 @@ def index():
     return render_template(
         'index.html'
     )
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    # note that we set the 500 status explicitly
+    return render_template('500.html'), 500
 
 @app.route('/too_large_file')
 def too_large_file():
@@ -101,7 +117,7 @@ def no_face():
     )
 
 def scale_box(img, WIDTH, HEIGHT):
-    """指定した大きさに収まるように、アスペクト比を固定して、リサイズする。
+    """Fix the aspect ratio and resize it so that it fits in the specified size.
     """
     height, width = img.shape[:2]
     aspect = width / height
@@ -188,9 +204,13 @@ def name_path(name):
     face_encoding = face_recognition.face_encodings(
         selected_face_npData, face_location, 0, 'small')
 
-    matches = face_recognition.compare_faces(
-        known_face_encodings_ndarray, face_encoding, 0.35)
-    # matches = face_recognition.compare_faces(known_face_encodings_ndarray, face_encoding, 0.45)
+    try:
+        matches = face_recognition.compare_faces(
+            known_face_encodings_ndarray, face_encoding, 0.35)
+        # matches = face_recognition.compare_faces(known_face_encodings_ndarray, face_encoding, 0.45)
+    except:
+        return render_template('error.html', name=name)
+
     face_distances = face_recognition.face_distance(
         known_face_encodings_ndarray, face_encoding)
     best_match_index = np.argmin(face_distances)

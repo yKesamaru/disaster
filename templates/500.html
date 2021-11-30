@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Internal Server Error{% endblock %}
 {% block body %}
+{% block content %}
   <h1>Internal Server Error</h1>
-  <p>Oops... we seem to have made a mistake, sorry!</p>
-  <p><a href="{{ url_for('index') }}">Go somewhere nice instead</a>
+  <p>Please click the button below to upload another photo again.</p>
+<!-- Re-uploal button -->
+<a href="{{ url_for('goto_upload_page') }}">
+  <button class="button is-primary">Re-upload</button>
+</a>
 {% endblock %}

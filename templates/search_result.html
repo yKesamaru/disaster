@@ -6,7 +6,8 @@
 {% else %}
 <h1 class="title">We found!</h1>
 <p>
-    Just similar person were found. This is not guarantee one's identity.
+    Just similar person were found.<br>
+    (This result does *not* mean that the person you are looking for is definitely found.)
 </p>
 {% endif %}
 
@@ -19,8 +20,8 @@
 <div class="box">
     <p class="subtitle"><strong>Detailed information</strong></p>
     {% if shelter_name == "couldn't find that person" %}
-    <p>We couldn't find person who you looking for.</p>
-    <p>Try it with a different photo, or try again after a while.</p>
+    <p class="has-text-left">We couldn't find person who you looking for.</p>
+    <p class="has-text-left">Try it with a different photo, or try again after a while.</p>
     {% else %}
     <p>&#128467; {{ date }}</p>
     <!-- Disable html escaping -->
@@ -43,16 +44,27 @@
     </li>
 </ul>
 <p>
+
+<!-- Go back to Home button -->
 <a href="{{ url_for('index') }}">
     <button class="button is-info">Home</button>
 </a>
+
+<!-- 
+# Re-uploal button
+<a href="{{ url_for('goto_upload_page') }}">
+    <button class="button is-primary">Re-upload</button>
+</a> -->
+
+<!-- Re-uploal button -->
 <a href="{{ url_for('goto_upload_page') }}">
     <button class="button is-primary">Re-upload</button>
 </a>
+
 </p>
 <p>
     How was the Disaster demonstration?<br />
     Anyone can freely develop and use Disaster, which is developed in open source.<br />
-    Visit the <a href="https://github.com/yKesamaru/disaster" target="blank">Disaster page on github!</a>
+    Visit the <a href="https://github.com/yKesamaru/disaster" target="blank">Disaster page on github</a>!
 </p>
 {% endblock %}

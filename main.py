@@ -17,10 +17,16 @@ app = Flask(__name__)
 
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 # limit upload file size : 16MB
-# app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 # However, when demonstrating on heroku, the memory allocation is very small, so limit it to less than 300KB.
-app.config['MAX_CONTENT_LENGTH'] = 500 * 1024
+# app.config['MAX_CONTENT_LENGTH'] = 300 * 1024
+# app.config['MAX_CONTENT_LENGTH'] = 500 * 1024
+
+# Max image size
+HEIGHT = 1000
+WIDTH = 1000
 
 npKnown = np.load('npKnown.npz', allow_pickle=True)
 A, B = npKnown.files
@@ -94,17 +100,34 @@ def no_face():
         'no_face.html'
     )
 
+def scale_box(img, WIDTH, HEIGHT):
+    """指定した大きさに収まるように、アスペクト比を固定して、リサイズする。
+    """
+    height, width = img.shape[:2]
+    aspect = width / height
+    if WIDTH / HEIGHT >= aspect:
+        nh = HEIGHT
+        nw = round(nh * aspect)
+    else:
+        nw = WIDTH
+        nh = round(nw / aspect)
+    dst = cv2.resize(img, dsize=(nw, nh))
+    return dst
 
 @app.route('/uploads', methods=['get', 'post'])
 def send():
     img_file = request.files['img_file']
+
     uploaded_file_path = os.path.join(
         UPLOAD_FOLDER, secure_filename(img_file.filename))
     # uploaded_file_path = os.path.join(UPLOAD_FOLDER, img_file.filename)
+
     img_file.save(uploaded_file_path)
 
     check_images_file_npData = cv2.imread(
         os.path.join(UPLOAD_FOLDER, secure_filename(img_file.filename)))
+
+    check_images_file_npData = scale_box(check_images_file_npData, WIDTH, HEIGHT)
 
     # convert BGR to RGB
     check_images_file_npData = check_images_file_npData[:, :, ::-1]

@@ -59,7 +59,7 @@ def handle_exception(e):
         return e
 
     # now you're handling non-HTTP exceptions only
-    return render_template("500_generic.html", e=e), 500
+    return render_template("error.html", e=e), 500
 
 @app.route('/')
 def index():

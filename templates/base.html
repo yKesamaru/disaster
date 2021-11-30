@@ -21,7 +21,8 @@
     <title>Disaster</title>
 </head>
 
-<body style="background-color:#ffe8f6">
+<body style="background-color:#ffe8f6; max-width: 600px; margin: auto;">
+<!-- <body style="background-color:#ffe8f6"> -->
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="{{ url_for('index') }}">
@@ -39,7 +40,7 @@
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <!-- <a class="navbar-item" href="{{ url_for('index') }}">Home</a> -->
-                <a class="navbar-item">Disaster Information</a>
+                <a class="navbar-item">Information</a>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Contribution</a>
                     <div class="navbar-dropdown">
@@ -48,20 +49,20 @@
                         <a class="navbar-item">Organization</a>
                     </div>
                     <a class="navbar-item" href="https://github.com/yKesamaru/disaster#disaster"
-                        target="blank">Technical documentation</a>
+                        target="blank">Tech document</a>
                 </div>
             </div>
 
-            <div class="navbar-end">
-                <!-- <div class="navbar-item">
+            <!-- <div class="navbar-end">
+                <div class="navbar-item">
                     <div class="buttons">
                         <a class="button is-primary">
                             <strong>Sign up</strong>
                         </a>
                         <a class="button is-light">Log in</a>
                     </div>
-                </div> -->
-            </div>
+                </div>
+            </div> -->
         </div>
     </nav>
 

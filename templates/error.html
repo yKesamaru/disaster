@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Error</h1>
+<p>The numerical data of the face could not be consistent with each other.</p>
+<div class="box">
+    <figure>
+        <img class="has-ratio" width="200" style="border-radius: 20px" src="{{ name }}">
+    </figure>
+    <p>Please try uploading another photo again.</p>
+</div>
+
+<!-- Re-uploal button -->
+<a href="{{ url_for('goto_upload_page') }}">
+    <button class="button is-primary">Re-upload</button>
+</a>
+
+{% endblock %}

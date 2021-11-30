@@ -3,3 +3,4 @@ web_app/static/faces/
 web_app/uploads/
 zenn.md
 static/faces/*.JPG
+*.pyc

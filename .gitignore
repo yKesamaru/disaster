@@ -4,3 +4,4 @@ web_app/uploads/
 zenn.md
 static/faces/*.JPG
 *.pyc
+uploads/*

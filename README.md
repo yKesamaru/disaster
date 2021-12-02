@@ -3,9 +3,9 @@
 # Disaster
 Disaster is a face search system for disasters using `dlib`, `face_recognition`, `flask`, `PySimpleGUI` and others, and what is written in `Python`.  
 
-How can you find a loved one in the event of a disaster? Disaster allows you to search for the face of the person you are looking for from the video taken by the camera installed in the shelter.  
+How can you find a loved one in the event of immediately after a disaster? Disaster allows you to search for the face of the person you are looking for from the video taken by the camera installed in the shelter using Face Recognition technology.  
 
-Disaster is most privacy-friendly.The face information is replaced with irrecoverable numerical data, and even the developer cannot restore the original face image.  
+Disaster is most privacy-friendly. The face information is replaced with irrecoverable numerical data, and even the developer cannot restore the original face image.  
 
 * Disaster web application demo  
 ![demo](./img/demo.gif)  
@@ -18,7 +18,7 @@ Disaster is most privacy-friendly.The face information is replaced with irrecove
 You can experience the Disaster web application.
 https://disaster-application.herokuapp.com/
 
-***Since I am using heroku's free plan, it takes about 30 seconds to start the web application.***
+***Since I am using heroku's free plan, it takes about 30 seconds or more to start the web application.***
 
 ## Project background
 It is an urgent task to find a solution to situation where safety of a loved one cannot be confirmed in a disaster. 
@@ -155,7 +155,7 @@ This feature has not been created yet.
 Disaster is maintenanced by Yoshitsugu Kesamaru.  
 I hope that similar projects will spread widely.  
 
-My mother tongue is not English, so I'm not very good at it, so I would appreciate it if you could point out any description using incorrect English. 
+Since my mother tongue is not English, I'm not very good at it, so I would appreciate it if you could point out any description my using incorrect English. 
 
 Thankyou
 

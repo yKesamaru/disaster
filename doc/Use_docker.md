@@ -112,15 +112,9 @@ non-network local connections being removed from access control list
 ```
   
 
-# About the appearance
-## Responsive design mode  
-If you access http://172.17.0.2:5000/ with a browser, the display will be as follows.   
-![top_page](img/top_page.png)  
-Turn on browser's responsive design mode.  
-![responsive](img/responsive.png)  
 
 # Upload photos
 Photos for the experiment are attached in advance.
-These photos are `disaster/photos`.
+These photos are `disaster/static/photos`.
 
 

@@ -85,6 +85,12 @@ def too_large_file():
         'too_large_file.html'
     )
 
+@app.route('/information')
+def information():
+    return render_template(
+        'information.html'
+    )
+
 @app.route('/heroku_photos')
 def heroku_photos():
     return render_template(

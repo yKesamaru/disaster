@@ -159,6 +159,3 @@ Since my mother tongue is not English, I'm not very good at it, so I would appre
 
 Thankyou
 
-<!-- ## ToDo
-*  -->
-

@@ -44,9 +44,9 @@
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Contribution</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">Individual</a>
-                        <a class="navbar-item">Enterprise</a>
-                        <a class="navbar-item">Organization</a>
+                        <a class="navbar-item" href="{{ url_for('individual') }}">Individual</a>
+                        <a class="navbar-item" href="{{ url_for('enterprise') }}">Enterprise</a>
+                        <a class="navbar-item" href="{{ url_for('organization') }}">Organization</a>
                     </div>
                     <a class="navbar-item" href="https://github.com/yKesamaru/disaster#disaster"
                         target="blank">Tech document</a>

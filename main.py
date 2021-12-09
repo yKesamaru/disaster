@@ -91,6 +91,24 @@ def information():
         'information.html'
     )
 
+@app.route('/individual')
+def individual():
+    return render_template(
+        'individual.html'
+    )
+
+@app.route('/enterprise')
+def enterprise():
+    return render_template(
+        'enterprise.html'
+    )
+
+@app.route('/organization')
+def organization():
+    return render_template(
+        'organization.html'
+    )
+
 @app.route('/heroku_photos')
 def heroku_photos():
     return render_template(

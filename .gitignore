@@ -5,3 +5,5 @@ zenn.md
 static/faces/*.JPG
 *.pyc
 uploads/*
+static/faces/*.png
+

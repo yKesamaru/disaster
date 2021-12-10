@@ -218,6 +218,11 @@ def send():
     else:
         return render_template('no_face.html')
 
+def to_percentage(tolerance):
+    # str型で渡されてもいいようにfloatに型変換
+    tolerance = float(tolerance)
+    percentage = -4.76190475*(tolerance * tolerance)+(-0.380952375) * tolerance +100
+    return percentage
 
 @app.route('/static/faces/<name>.html')
 def name_path(name):
@@ -240,14 +245,18 @@ def name_path(name):
     best_match_index = np.argmin(face_distances)
     shelter_name = "couldn't find that person"
     date = 'None'
+    percentage = 'None'
     if matches[best_match_index]:
         shelter_name = known_face_names_list[best_match_index]
-        print('sheltername is ', shelter_name)
         shelter_name, date = shelter_name.split('__', maxsplit=1)
+        percentage = to_percentage(min(face_distances))
+        percentage = str(round(percentage, 2)) + '%'
+        print('percentage: ', percentage)
 
     return render_template(
         'search_result.html',
         name = name,
         shelter_name = shelter_name,
-        date = date
+        date = date,
+        percentage = percentage
     )

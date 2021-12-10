@@ -245,7 +245,7 @@ def name_path(name):
     best_match_index = np.argmin(face_distances)
     shelter_name = "couldn't find that person"
     date = 'None'
-    percentage = 'None'
+    percentage = ''
     if matches[best_match_index]:
         shelter_name = known_face_names_list[best_match_index]
         shelter_name, date = shelter_name.split('__', maxsplit=1)

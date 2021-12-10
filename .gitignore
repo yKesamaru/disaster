@@ -6,4 +6,4 @@ static/faces/*.JPG
 *.pyc
 uploads/*
 static/faces/*.png
-
+static/faces/*.jpg

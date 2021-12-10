@@ -5,10 +5,10 @@ import shutil
 import cv2
 import face_recognition
 import numpy as np
+import werkzeug
 from flask import Flask, render_template, request
 from PIL import Image
 from werkzeug.utils import secure_filename
-import werkzeug
 
 # ToDo
 # Check uploaded file
@@ -51,6 +51,7 @@ def handle_over_max_file_size(error):
     )
 
 from werkzeug.exceptions import HTTPException
+
 
 @app.errorhandler(Exception)
 def handle_exception(e):

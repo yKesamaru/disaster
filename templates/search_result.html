@@ -13,8 +13,16 @@
 
 <div class="box">
     <figure>
-        <img class="has-ratio" width="200" style="border-radius: 20px" src="/static/images/privacy.png">
-        <img class="has-ratio" width="200" style="border-radius: 20px" src="{{ name }}">
+        {% if not shelter_name == "couldn't find that person" %}
+            <img class="has-ratio" width="150" style="border-radius: 20px" src="/static/images/privacy.png">
+            <figcaption>
+                Recorded face image
+            </figcaption>
+        {% endif %}
+            <img class="has-ratio" width="150" style="border-radius: 20px" src="{{ name }}">
+            <figcaption>
+                Uploaded face image
+            </figcaption>
     </figure>
     <h2>{{ percentage }}</h2>
 </div>
@@ -47,21 +55,21 @@
 </ul>
 <p>
 
-<!-- Go back to Home button -->
-<a href="{{ url_for('index') }}">
-    <button class="button is-info">Home</button>
-</a>
+    <!-- Go back to Home button -->
+    <a href="{{ url_for('index') }}">
+        <button class="button is-info">Home</button>
+    </a>
 
-<!-- 
+    <!-- 
 # Re-uploal button
 <a href="{{ url_for('goto_upload_page') }}">
     <button class="button is-primary">Re-upload</button>
 </a> -->
 
-<!-- Re-uploal button -->
-<a href="{{ url_for('goto_upload_page') }}">
-    <button class="button is-primary">Re-upload</button>
-</a>
+    <!-- Re-uploal button -->
+    <a href="{{ url_for('goto_upload_page') }}">
+        <button class="button is-primary">Re-upload</button>
+    </a>
 
 </p>
 <p>
@@ -69,5 +77,6 @@
     Anyone can freely develop and use Disaster, which is developed in open source.<br />
     Visit the <a href="https://github.com/yKesamaru/disaster" target="blank">Disaster page on github</a>!
 </p>
-<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 {% endblock %}

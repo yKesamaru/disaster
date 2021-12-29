@@ -12,7 +12,7 @@ Disaster is most privacy-friendly. The face information is replaced with irrecov
 ![screenshot](https://user-images.githubusercontent.com/93259837/139792630-06f66eef-2b41-4bbf-8c00-6c57ac811974.png)  
 
 * The Disaster application window demo of creating 128D vector data from faces.  
-![create_face_data](./img/demo.gif)  
+![create_face_data](./img/create_face_data_demo.gif)  
 
 ## Visit demonstration page on HEROKU !
 You can experience the Disaster web application.

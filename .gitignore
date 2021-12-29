@@ -2,8 +2,11 @@ web_app/__pycache__/
 web_app/static/faces/
 web_app/uploads/
 zenn.md
-static/faces/*.JPG
-*.pyc
 uploads/*
+static/faces/*.JPG
 static/faces/*.png
 static/faces/*.jpg
+__pycache__/*.pyc
+__pycache__
+*.pyc
+

@@ -1,5 +1,22 @@
-<div style="text-align: right"><a href="doc/README_ja.md">[ja]</a></div>  
-
+![bannar](./img/image1765-fs8.png)  
+[日本語](doc/README_ja.md)
+  
+# Table of Contents
+- [Disaster](https://github.com/yKesamaru/disaster#disaster)
+- [Visit demonstration page on HEROKU !](https://github.com/yKesamaru/disaster#visit-demonstration-page-on-heroku-)
+- [Project background](https://github.com/yKesamaru/disaster#project-background)
+- [Features](https://github.com/yKesamaru/disaster#features)
+- [Requirements](https://github.com/yKesamaru/disaster#requirements)
+- [Usage](https://github.com/yKesamaru/disaster#usage)
+  - [Use Docker](https://github.com/yKesamaru/disaster#requirements)
+  - [Other than using Docker](https://github.com/yKesamaru/disaster#other-than-using-docker)
+    - [When trying to create numerical face data](https://github.com/yKesamaru/disaster#when-trying-to-create-numerical-face-data)
+- [Component](https://github.com/yKesamaru/disaster#component)
+  - [1. Web application](https://github.com/yKesamaru/disaster#1-web-application)
+  - [2. The Application for creating numerical face data from camera](https://github.com/yKesamaru/disaster#2-the-application-for-creating-numerical-face-data-from-camera)
+  - [3. Data synchronization between servers](https://github.com/yKesamaru/disaster#3-data-synchronization-between-servers)
+- [Project maintenance and contribution](https://github.com/yKesamaru/disaster#project-maintenance-and-contribution)
+- [License]()
 # Disaster
 Disaster is a face search system for disasters using `dlib`, `face_recognition`, `flask`, `PySimpleGUI` and others, and what is written in `Python`.  
 
@@ -14,13 +31,13 @@ Disaster is most privacy-friendly. The face information is replaced with irrecov
 * The Disaster application window demo of creating 128D vector data from faces.  
 ![create_face_data](./img/create_face_data_demo.gif)  
 
-## Visit demonstration page on HEROKU !
+# Visit demonstration page on HEROKU !
 You can experience the Disaster web application.
 https://disaster-application.herokuapp.com/
 
 ***Since I am using heroku's free plan, it takes about 30 seconds or more to start the web application.***
 
-## Project background
+# Project background
 It is an urgent task to find a solution to situation where safety of a loved one cannot be confirmed in a disaster. 
 Currently, various companies are working to solve problems bringing together feasible technologies. 
 
@@ -30,20 +47,19 @@ If the situation when victim cannot be used smartphone, it is so difficult for f
 
 These situations are occurring all over the world not only natural disasters but also wars or civil wars.  
 
-## Features
+# Features
   * Converts the image taken by a camera installed in the shelter into numerical data that cannot be restored to the original face image. Since privacy is of the utmost importance, the victim's face image is not displayed and immediately is removed.
 
 * When upload a family photo to the Disaster web application, it will automatically look for similar faces and display information about when and in which shelter the victim was.  
 
 * Local governments, organizations and others can freely use Disaster.  
 
-## Requirements
+# Requirements
 * Ubuntu or similar Linux distribution
 * NVIDIA GeForce GTX 1660 Ti +
    * Not needed if you just want to try Disaster. In that case, processing speed is extremely slow.  
    * If you want to use GPU, you need to install the driver etc. by the method shown [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installing-docker-ce).
 * Python 3.7 +
-* git
 * Docker 19.03 +
   * Only needed if you use Docker.
 * Network camera or webcam
@@ -61,8 +77,8 @@ Total Memory	16389096 KiB
 Python 3.7.11(pyenv)
 ```
   
-## Usage  
-### Use Docker
+# Usage  
+## Use Docker
 If you use Docker, please refer to <a href="doc/Use_docker.md">here</a>.  
 If you do not have the nvidia-docker2 package installed, the operating speed is extremely slow. However, if you just want to try Disaster, I think you can leave it as it is.  
 In that case, please use "Dockerfile".  
@@ -85,7 +101,7 @@ Also, use "Dockerfile_GPU" for the Dockerfile. In that case, change the file nam
 
 
 
-### Other than using Docker
+## Other than using Docker
 Build python runtime environment and others are described <a href="doc/Build_python_runtime_environment.md">here</a>.  
 ```bash
 $ git clone https://github.com/yKesamaru/disaster.git
@@ -103,7 +119,7 @@ $ flask run
 ```
 *** Access `http://127.0.0.1:5000/` ***
 
-#### When trying to create numerical face data
+## When trying to create numerical face data
 You can use network cameras and USB cameras in Disaster.  
 Here, an mp4 file is used for the sake of simplicity.  
 Optional: Activate the Python virtual environment in advance.
@@ -114,9 +130,9 @@ $ cd ../
 $ python marge_npKnown.py
 ```
 
-## Component
+# Component
 This system consists of three blocks.
-### 1. Web application  
+## 1. Web application  
 ![web_application](https://user-images.githubusercontent.com/93259837/139513838-3e22fb8e-f9b7-4c88-aa7c-2ec4aa72cdd4.png)  
 ```bash
 Disaster
@@ -126,7 +142,7 @@ Disaster
 ```
 People who want to find a family upload a family photo. It converts to non-recoverable numerical data on the server and searches for similar faces in the footage taken by the shelter's camera. Date, time and the shelter's name are displayed on the smartphone.  
 
-### 2. The Application for creating numerical face data from camera
+## 2. The Application for creating numerical face data from camera
 ![make_data_application](https://user-images.githubusercontent.com/93259837/139513900-7dd066a4-5295-4ae6-aa49-d3e6feb01cd6.png)  
 ```bash
 Disaster
@@ -147,15 +163,16 @@ All the faces taken by the camera installed in the shelter are converted into nu
 The shelter01 and shelter02 directories were created to represent multiple shelters.  
 Click <a href="doc/How_to_operate.md">here</a> for a more detailed explanation.
 
-### 3. Data synchronization between servers
+## 3. Data synchronization between servers
 The face data file is shared between each server to prevent the entire system from going down.  
 This feature has not been created yet.
 
-## Project maintenance and contribution
+# Project maintenance and contribution
 Disaster is maintenanced by Yoshitsugu Kesamaru.  
 I hope that similar projects will spread widely.  
 
 Since my mother tongue is not English, I'm not very good at it, so I would appreciate it if you could point out any description my using incorrect English. 
 
 Thankyou
-
+# License
+MIT license

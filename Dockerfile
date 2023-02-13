@@ -1,4 +1,5 @@
-FROM ubuntu:18.04
+
+FROM ubuntu:20.04
 LABEL maintainer="yKesamaru <y.kesamaru@tokai-kaoninsho.com>"
 
 ENV TZ=Asia/Tokyo
@@ -41,6 +42,14 @@ RUN cd ~ && \
     mkdir -p dlib && \
     git clone https://github.com/davisking/dlib.git dlib/ && \
     cd  dlib/ && \
+    # もしユーザーがgcc-8をインストールしていない場合
+    if [ ! -e /usr/bin/gcc-8 ]; then
+        # 管理者パスワードを入力した後、gcc-8をsudo aptでインストールする
+        sudo apt install gcc-8 g++-8
+        # 管理者パスワードを入力する
+    fi
+    export CC=/usr/bin/gcc-8
+    export CXX=/usr/bin/g++-8
     python3 setup.py install
 
 # Install Disaster
